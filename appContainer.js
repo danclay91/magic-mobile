@@ -29,7 +29,8 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            data: [],
+            data: [{name:'fred', lifeTotal: 20, key: 0},
+                   {name:'daryll', lifeTotal: 30, key: 1}],
             selectedKey: null,
         }
     }
@@ -82,7 +83,7 @@ export default class App extends Component {
      */
     selectPlayer = (key) => {
         const data = this.state.data;
-
+        alert(key);
         this.setState({
             //selectedPlayer: data[key], 
             selectedKey: key,

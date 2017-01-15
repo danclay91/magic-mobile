@@ -6,9 +6,6 @@ import {
 } from 'react-native'
 import Button from './playerButton.js'
 import AddButton from './addPlayer.js'
-let mockPlayers = [
-    {name: 'danny'}, {name: 'micah'}, {name: 'andrew'}
-]
 
 export default class Hold extends Component {
 
@@ -18,9 +15,9 @@ export default class Hold extends Component {
 
     render() {
         let playerButtons = ()=> {
-            let allPlayers = mockPlayers.map((_player,index)=>{
+            let allPlayers = this.props.data.map((_player,index)=>{
                 return(
-                    <Button selectFunction={this.props.selectFunction} key={index} id={index} player={_player}/>
+                    <Button onSelectPlayer={this.props.onSelectPlayer} key={index} id={index} player={_player}/>
                 )
             })
             return allPlayers;
@@ -30,7 +27,7 @@ export default class Hold extends Component {
                 <View style = {styles.playerContainer}>
                    {playerButtons()}
                 </View> 
-                <TouchableOpacity style={styles.addPlayer} onPress={()=>alert("button pressed")}/>
+                <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}/>
             </View>
         );
     }
