@@ -11,48 +11,59 @@ import Button from './playerButton.js'
 export default class Hold extends Component {
 
     render() {
-        let playerButtons = ()=> {
-            let allPlayers = this.props.data.map((_player,index)=>{
-                return(
-                    <Button onSelectPlayer={this.props.onSelectPlayer} key={index} id={index} player={_player}/>
+        let playerButtons = () => {
+            let allPlayers = this.props.data.map((_player, index) => {
+                return (
+                    <Button onSelectPlayer={this.props.onSelectPlayer} key={index} id={index} player={_player} />
                 )
             })
             return allPlayers;
         }
         return (
-            <View style={{ flex: 1, backgroundColor: 'green' }}>
-                <View style ={styles.settingsContainer}>
-                 <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
-                    <Text style ={{color: 'red'}}>AddPlayer</Text>
-                 </TouchableOpacity>
-                  <TouchableOpacity style={styles.editPlayer} onPress={()=>this.props.openEdit()}>
-                  <Text>EditPlayer</Text>
-                  </TouchableOpacity>
-                </View>
-                <ScrollView style = {styles.playerContainer} horizontal={true}>
-                   {playerButtons()}
-                </ScrollView> 
+            <View style={{ flex: 2, backgroundColor: '#325182' }}>
+                <View style={styles.settingsContainer}>
+                    <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
+                        <Text style={{ color: 'black', textAlign: 'center'}}>AddPlayer</Text>
+                    </TouchableOpacity>
+                <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
+                    <Text style={{ color: 'black', textAlign: 'center' }}>EditPlayer</Text>
+                </TouchableOpacity>
             </View>
+            <View style={styles.playerContainer}>
+                <ScrollView horizontal={true}>
+                    {playerButtons()}
+                </ScrollView>
+            </View>
+            </View >
         );
     }
 }
 
 const styles = StyleSheet.create({
-    playerContainer:{  
-        flex: 4,
-        backgroundColor: 'transparent' ,
+    playerContainer: {
+        flex: 2,
+        backgroundColor: 'transparent',
         flexDirection: 'row'
     },
-    settingsContainer:{
-        flex:1,
+    settingsContainer: {
+        flex: 1,
         flexDirection: 'row'
     },
     addPlayer: {
         flex: 1,
-        backgroundColor: 'black'
+        backgroundColor: '#babdc1',
+        borderLeftWidth: 2,
+        borderRightWidth: 1,
+        borderBottomWidth: 2,
+        borderColor: 'black'
+
     },
-    editPlayer:{
+    editPlayer: {
         flex: 1,
-        backgroundColor: 'yellow'
+        backgroundColor: '#babdc1',
+        borderRightWidth: 2,
+        borderBottomWidth: 2,
+        borderLeftWidth:1,
+        borderColor: 'black'
     }
 });

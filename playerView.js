@@ -19,10 +19,10 @@ export default class PlayerView extends Component {
 
 
         return (
-            <View style={{ flex: 6, backgroundColor: 'pink' }} >
+            <View style={{ flex: 6, backgroundColor: '#7fd3e0' }} >
 
-                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'pink' }} >
 
+                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
 
 
                     <View style={{ flex: 2, }} >
@@ -39,7 +39,7 @@ export default class PlayerView extends Component {
 
                     </View>
                     <View>
-                        <View style={{ flex: 1, }} />
+                       <TouchableOpacity style={{ flex: 1, backgroundColor:'red' }}/>
 
                         <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
@@ -69,11 +69,10 @@ export default class PlayerView extends Component {
 
                 </View>
 
-                <View style={{ flex: .75, backgroundColor: 'blue' }} >
-                </View>
+                <SettingsBar />
 
 
-                <View style={{ flex: 4, backgroundColor: 'yellow' }} />
+                <View style={styles.counterBox} />
 
             </View>
 
@@ -101,8 +100,15 @@ var styles = StyleSheet.create({
 
     lifeScore: {
         textAlign: 'center',
-        fontSize: 98,
+        fontSize: 90,
         flex: 3
     },
+
+    counterBox: {
+        flex: 4,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderColor: 'black'
+    }
 
 });
