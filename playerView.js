@@ -10,71 +10,7 @@ import {
 
 import SettingsBar from './settingsBar';
 
-
-
 export default class PlayerView extends Component {
-
-    /*Vityle={{ flex: 1, backgroundColor: 'white' }} >
-                       <Text style={styles.playerName}>{selectedPlaer.name}</Text>
-    
-                    </View>                  <View style={{ flex: 6, flexDirection: 'row', backgroundColor: 'orange' }} >
-    
-                        <View style={{ flex: 1, backgroundCol                    'red' }} >
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'yellow' }} >
-    
-                                <TouchableOpacity onPress={this.props.minus} style={{ flex: 1, backgroundColor: 'red' }}>
-                                    <Text style={styles.lifeButtons}>-</Text>
-    
-                                </TouchableOpacity>
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                        </View>
-    
-                        <View style={{ flex: 2, backgroundColor: 'pink' }} >
-    
-                            <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
-    
-                        </View>
-    
-    
-                        <View style={{ flex: 1, backgroundColor: 'green' }} >
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'yellow' }} >
-    
-                                <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, backgroundColor: 'green' }}>
-                                    <Text style={styles.lifeButtons}>+</Text>
-    
-                                </TouchableOpacity>
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                        </View>
-    
-                    </View>
-    
-                    <View style={{ flex: 5, backgroundColor: 'blue' }} >
-    
-                    </View> */
-
-
 
     render() {
 
@@ -84,8 +20,6 @@ export default class PlayerView extends Component {
 
         return (
             <View style={{ flex: 6, backgroundColor: 'pink' }} >
-
-
 
                 <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'pink' }} >
 
@@ -109,7 +43,7 @@ export default class PlayerView extends Component {
 
                         <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
-                        <View style={{ flex: 1,}} />
+                        <View style={{ flex: 1, }} />
 
                     </View>
                     <View style={{ flex: 2, }} >
@@ -130,7 +64,7 @@ export default class PlayerView extends Component {
 
                 </View>
 
-                <View style={{ flex: .50,}} >
+                <View style={{ flex: .50, }} >
                     <Text style={styles.playerName}>{selectedPlayer.name}</Text>
 
                 </View>
