@@ -8,7 +8,7 @@ import {
 
 } from 'react-native'
 
-
+import SettingsBar from './settingsBar'; 
 
 
 
@@ -85,6 +85,9 @@ export default class PlayerView extends Component {
                 </View>
 
                 <View style={{ flex: 5, backgroundColor: 'blue' }} >
+                    
+                    <SettingsBar resetLife={this.props.resetLife}/>
+                    <View style={{flex:4}}/>
 
                 </View>
 
