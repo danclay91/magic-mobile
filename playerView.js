@@ -38,12 +38,13 @@ export default class PlayerView extends Component {
                         </TouchableOpacity>
 
                     </View>
-                    <View>
-                       <TouchableOpacity style={{ flex: 1, backgroundColor:'red' }}/>
 
-                        <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
-
-                        <View style={{ flex: 1, }} />
+                    <View style={styles.lifeScore}>
+                        <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} />
+                        <View style={{ flex: 3, alignItems:'center', justifyContent:'center' }}>
+                            <Text style={{fontSize:100}}>{selectedPlayer.lifeTotal}</Text>
+                        </View>
+                       
 
                     </View>
                     <View style={{ flex: 2, }} >
@@ -99,9 +100,7 @@ var styles = StyleSheet.create({
     },
 
     lifeScore: {
-        textAlign: 'center',
-        fontSize: 90,
-        flex: 3
+        flex: 2,
     },
 
     counterBox: {
