@@ -33,8 +33,26 @@ export default class App extends Component {
             data: [{name:'Fred', lifeTotal: 20, key: 0},
                    {name:'Daryll', lifeTotal: 30, key: 1}],
             selectedKey: 1,
-            modalVisible: false
+            modalVisible: false, 
+            settings:{
+                defaultLife: 20, 
+            }
         }
+    }
+
+    /**
+     * 
+     */
+    resetLife = () =>{
+        data = this.state.data; 
+
+        data.forEach(function(player) {
+            player.lifeTotal=0; 
+        }, this);
+
+        this.setState({
+            data:data
+        });
     }
 
     /**
@@ -97,7 +115,7 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
-                plus={this.incrementLife} minus={this.decrementLife}
+                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife}
                 />
                 <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
                 <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>

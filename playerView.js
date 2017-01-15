@@ -8,7 +8,7 @@ import {
 
 } from 'react-native'
 
-
+import SettingsBar from './settingsBar'; 
 
 
 
@@ -138,7 +138,7 @@ export default class PlayerView extends Component {
                 </View>
 
                 <View style={{ flex: .75, backgroundColor: 'blue' }} >
-                </View>
+
 
                 <View style={{ flex: 4.75, backgroundColor: 'yellow' }} >
                 </View>
