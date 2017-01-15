@@ -9,18 +9,48 @@ import {
 } from 'react-native'
 
 import SettingsBar from './settingsBar';
+import Icon from 'react-native-vector-icons/Foundation'
 
 export default class PlayerView extends Component {
+
+    getBackgroundColor() {
+        selectedPlayer = this.props.data[this.props.selectedKey] 
+
+        var backgroundColor; 
+
+        switch (selectedPlayer.color){
+            case "r":
+                backgroundColor = 'red'; 
+                break; 
+            case "b":
+                backgroundColor = 'black';
+                break; 
+            case "g":
+                backgroundColor = 'green'; 
+                break; 
+            case 'w':
+                backgroundColor =  'white'; 
+                break; 
+            case "u":
+                backgroundColor = 'blue'; 
+                break; 
+            default:
+                backgroundColor =  '#7fd3e0';
+                break; 
+        }
+
+        return backgroundColor; 
+    }
 
     render() {
 
         let selectedPlayer = this.props.data[this.props.selectedKey]
 
-
+        bgColor = this.getBackgroundColor(); 
 
         return (
-            <View style={{ flex: 6, backgroundColor: '#7fd3e0' }} >
-
+            <View style={{ flex: 6, backgroundColor: bgColor }}>
+            
 
                 <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
 
@@ -40,9 +70,9 @@ export default class PlayerView extends Component {
                     </View>
 
                     <View style={styles.lifeScore}>
-                        <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} />
+                        <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} onPress={()=>this.props.openBackground(true)}/>
                         <View style={{ flex: 3, alignItems:'center', justifyContent:'center' }}>
-                            <Text style={{fontSize:100}}>{selectedPlayer.lifeTotal}</Text>
+                            <Text style={{fontSize:100, fontFamily:'Teko-Bold'}}>{selectedPlayer.lifeTotal}</Text>
                         </View>
                        
 

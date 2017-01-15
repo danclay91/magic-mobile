@@ -18,10 +18,10 @@ export default class ModalExample extends Component {
       <View >
         <Modal
           animationType={"slide"}
-          transparent={false}
+          transparent={true}
           visible={this.props.modalVisible}
           onRequestClose={() => {this.props.setModalVisible(false)}}>
-         <View style={{marginTop: 22}}>
+         <View style={{marginRight:50, marginBottom:50, marginLeft:50 ,flex:1,backgroundColor:'white',marginTop: 50}}>
           <View>
             <Text>Hello World!</Text>
 

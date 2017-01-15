@@ -8,6 +8,7 @@ import {
 import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
+import BackgroundModal from './backgroundModal'
 
 /**
  * example of data --
@@ -30,12 +31,14 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            data: [{name:'Fred', lifeTotal: 20, key: 0},
-                   {name:'Daryll', lifeTotal: 30, key: 1}],
+            data: [{name:'Fred', lifeTotal: 20, color: null, key: 0},
+                   {name:'Daryll', lifeTotal: 30, color:null,  key: 1}],
             selectedKey: 1,
             modalVisible: false, 
+            backgroundModalVisible: false, 
             settings:{
                 defaultLife: 20, 
+                
             }
         }
     }
@@ -108,15 +111,32 @@ export default class App extends Component {
             selectedKey: key,
         });
     }
+
+    setColor = (color) =>{
+        let data = this.state.data; 
+        data[this.state.selectedKey].color = color; 
+
+        this.setState({
+            data:data, 
+        })
+
+    }
+
     setModalVisible = (visible)=> {
         this.setState({modalVisible: visible});
     }
+
+    setBackGroundModalVisible = (visible)=>{
+        this.setState({backgroundModalVisible: visible}); 
+    }
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
-                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife}
+                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
                 />
+                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
                 <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
                 <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
             </View>

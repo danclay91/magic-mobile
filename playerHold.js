@@ -14,7 +14,7 @@ export default class Hold extends Component {
         let playerButtons = () => {
             let allPlayers = this.props.data.map((_player, index) => {
                 return (
-                    <Button onSelectPlayer={this.props.onSelectPlayer} key={index} id={index} player={_player} />
+                    <Button onSelectPlayer={this.props.onSelectPlayer} data={this.props.data} key={index} id={index} player={_player} />
                 )
             })
             return allPlayers;
