@@ -4,53 +4,56 @@ import {
     Image,
     View,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    ScrollView
 
 } from 'react-native'
 
 import SettingsBar from './settingsBar';
-import Icon from 'react-native-vector-icons/Foundation'
+
+import TokenCounters from './tokenCounters';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class PlayerView extends Component {
 
     getBackgroundColor() {
-        selectedPlayer = this.props.data[this.props.selectedKey] 
+        selectedPlayer = this.props.data[this.props.selectedKey]
 
-        var backgroundColor; 
+        var backgroundColor;
 
-        switch (selectedPlayer.color){
+        switch (selectedPlayer.color) {
             case "r":
-                backgroundColor = 'red'; 
-                break; 
+                backgroundColor = 'red';
+                break;
             case "b":
                 backgroundColor = 'black';
-                break; 
+                break;
             case "g":
-                backgroundColor = 'green'; 
-                break; 
+                backgroundColor = 'green';
+                break;
             case 'w':
-                backgroundColor =  'white'; 
-                break; 
+                backgroundColor = 'white';
+                break;
             case "u":
-                backgroundColor = 'blue'; 
-                break; 
+                backgroundColor = 'blue';
+                break;
             default:
-                backgroundColor =  '#7fd3e0';
-                break; 
+                backgroundColor = '#7fd3e0';
+                break;
         }
 
-        return backgroundColor; 
+        return backgroundColor;
     }
 
     render() {
 
         let selectedPlayer = this.props.data[this.props.selectedKey]
 
-        bgColor = this.getBackgroundColor(); 
+        bgColor = this.getBackgroundColor();
 
         return (
             <View style={{ flex: 6, backgroundColor: bgColor }}>
-            
+
 
                 <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
 
@@ -61,7 +64,9 @@ export default class PlayerView extends Component {
 
                             <View style={{ flex: 1, }} />
 
-                            <Text style={styles.lifeButtons}>-</Text>
+                            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
+                                <Icon name="chevron-left" size={25} />
+                            </View>
 
                             <View style={{ flex: 1, }} />
 
@@ -69,44 +74,65 @@ export default class PlayerView extends Component {
 
                     </View>
 
-                    <View style={styles.lifeScore}>
-                        <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} onPress={()=>this.props.openBackground(true)}/>
-                        <View style={{ flex: 3, alignItems:'center', justifyContent:'center' }}>
-                            <Text style={{fontSize:100, fontFamily:'Teko-Bold'}}>{selectedPlayer.lifeTotal}</Text>
+                    <View>
+                        <View style={{ flex: 1 }}>
                         </View>
-                       
+
+
+                        <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
+
+                        <View style={styles.lifeScore}>
+                            <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} onPress={() => this.props.openBackground(true)} />
+                            <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 100, fontFamily: 'Teko-Bold' }}>{selectedPlayer.lifeTotal}</Text>
+                            </View>
+
+
+                        </View>
+                        <View style={{ flex: 2, }} >
+
+                            <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, }}>
+
+                                <View style={{ flex: 1, }} />
+
+                                <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
+                                    <Icon name="chevron-right" size={25} />
+                                </View>
+
+                                <View style={{ flex: 1, }} />
+
+                            </TouchableOpacity>
+
+                        </View>
+
+
 
                     </View>
-                    <View style={{ flex: 2, }} >
 
-                        <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, }}>
-
-                            <View style={{ flex: 1, }} />
-
-                            <Text style={styles.lifeButtons}>+</Text>
-
-                            <View style={{ flex: 1, }} />
-
-                        </TouchableOpacity>
+                    <View style={{ flex: .50, }} >
+                        <Text style={styles.playerName}>{selectedPlayer.name}</Text>
 
                     </View>
 
+                    <SettingsBar />
 
+
+                    <View style={styles.counterBox}>
+                        <ScrollView >
+
+
+                            <TokenCounters />
+
+
+
+
+                        </ScrollView>
+
+
+                    </View>
 
                 </View>
-
-                <View style={{ flex: .50, }} >
-                    <Text style={styles.playerName}>{selectedPlayer.name}</Text>
-
-                </View>
-
-                <SettingsBar />
-
-
-                <View style={styles.counterBox} />
-
             </View>
-
 
 
         )
@@ -135,9 +161,21 @@ var styles = StyleSheet.create({
 
     counterBox: {
         flex: 4,
-        backgroundColor: 'white',
+        backgroundColor: '#325182',
         borderWidth: 2,
-        borderColor: 'black'
+        borderColor: 'black',
+        borderBottomWidth: 0
+    },
+
+    counterItem: {
+        height: 56,
+        backgroundColor: '#d0d5dd',
+        borderColor: 'black',
+        borderWidth: 1,
+        flex: 5,
+        flexDirection: 'row'
+
+
     }
 
 });

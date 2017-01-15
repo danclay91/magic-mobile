@@ -8,7 +8,13 @@ import {
 } from 'react-native'
 import Button from './playerButton.js'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+
+
 export default class Hold extends Component {
+
+
 
     render() {
         let playerButtons = () => {
@@ -23,17 +29,24 @@ export default class Hold extends Component {
             <View style={{ flex: 2, backgroundColor: '#325182' }}>
                 <View style={styles.settingsContainer}>
                     <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
-                        <Text style={{ color: 'black', textAlign: 'center'}}>AddPlayer</Text>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+                            <Icon name="user-plus" size={25} />
+                        </View>
+                        <Text style={{ color: 'black', textAlign: 'center' }}>Add Player</Text>
                     </TouchableOpacity>
-                <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
-                    <Text style={{ color: 'black', textAlign: 'center' }}>EditPlayer</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.playerContainer}>
-                <ScrollView horizontal={true}>
-                    {playerButtons()}
-                </ScrollView>
-            </View>
+                    <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
+
+                        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+                            <Icon name="pencil-square-o" size={25} />
+                        </View>
+                        <Text style={{ color: 'black', textAlign: 'center' }}>Edit Players</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.playerContainer}>
+                    <ScrollView horizontal={true}>
+                        {playerButtons()}
+                    </ScrollView>
+                </View>
             </View >
         );
     }
@@ -55,6 +68,7 @@ const styles = StyleSheet.create({
         borderLeftWidth: 2,
         borderRightWidth: 1,
         borderBottomWidth: 2,
+        borderTopWidth: 2,
         borderColor: 'black'
 
     },
@@ -63,7 +77,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#babdc1',
         borderRightWidth: 2,
         borderBottomWidth: 2,
-        borderLeftWidth:1,
+        borderLeftWidth: 1,
+        borderTopWidth: 2,
         borderColor: 'black'
     }
 });
