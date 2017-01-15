@@ -9,7 +9,7 @@ import {
 import Button from './playerButton.js'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import FounIcon from 'react-native-vector-icons/Foundation';
 
 
 export default class Hold extends Component {
@@ -29,14 +29,14 @@ export default class Hold extends Component {
             <View style={{ flex: 2, backgroundColor: '#325182' }}>
                 <View style={styles.settingsContainer}>
                     <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
-                        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                            <Icon name="user-plus" size={25} />
+                        <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+                            <FounIcon name="torsos-all" size={25} />
                         </View>
                         <Text style={{ color: 'black', textAlign: 'center' }}>Add Player</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
 
-                        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+                        <View style={{ alignItems: 'center', justifyContent: 'center',}}>
                             <Icon name="pencil-square-o" size={25} />
                         </View>
                         <Text style={{ color: 'black', textAlign: 'center' }}>Edit Players</Text>
