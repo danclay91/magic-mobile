@@ -94,6 +94,9 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <PlayerView selectedKey={this.props.selectedKey} data={this.props.data} />
+                <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
+                plus={this.incrementLife} minus={this.decrementLife}
+                />
 
                 <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer}/>
             </View>
