@@ -16,7 +16,7 @@ export default class Button extends Component{
     render(){
 
         return(
-            <TouchableOpacity style ={{flex: 1, backgroundColor: 'purple'}} onPress={()=>this.props.onSelectPlayer(this.props.id)} >
+            <TouchableOpacity style ={{width: 50, backgroundColor: 'purple'}} onPress={()=>this.props.onSelectPlayer(this.props.id)} >
             <Text>{this.props.player.name}</Text>
             </TouchableOpacity>
         )

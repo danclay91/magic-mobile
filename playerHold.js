@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
     View,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Text,
+    ScrollView
 } from 'react-native'
 import Button from './playerButton.js'
 
@@ -18,11 +20,18 @@ export default class Hold extends Component {
             return allPlayers;
         }
         return (
-            <View style={{ flex: 1, backgroundColor: 'green', flexDirection: 'row' }}>
-                <View style = {styles.playerContainer}>
+            <View style={{ flex: 1, backgroundColor: 'green' }}>
+                <View style ={styles.settingsContainer}>
+                 <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
+                    <Text style ={{color: 'red'}}>AddPlayer</Text>
+                 </TouchableOpacity>
+                  <TouchableOpacity style={styles.editPlayer} onPress={()=>this.props.openEdit()}>
+                  <Text>EditPlayer</Text>
+                  </TouchableOpacity>
+                </View>
+                <ScrollView style = {styles.playerContainer} horizontal={true}>
                    {playerButtons()}
-                </View> 
-                <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}/>
+                </ScrollView> 
             </View>
         );
     }
@@ -34,8 +43,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent' ,
         flexDirection: 'row'
     },
+    settingsContainer:{
+        flex:1,
+        flexDirection: 'row'
+    },
     addPlayer: {
         flex: 1,
         backgroundColor: 'black'
     },
+    editPlayer:{
+        flex: 1,
+        backgroundColor: 'yellow'
+    }
 });

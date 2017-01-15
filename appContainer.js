@@ -7,6 +7,7 @@ import {
 
 import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
+import Edit from './editModal.js'
 
 /**
  * example of data --
@@ -32,6 +33,7 @@ export default class App extends Component {
             data: [{name:'fred', lifeTotal: 20, key: 0},
                    {name:'daryll', lifeTotal: 30, key: 1}],
             selectedKey: 1,
+            modalVisible: false
         }
     }
 
@@ -88,15 +90,17 @@ export default class App extends Component {
             selectedKey: key,
         });
     }
-
+    setModalVisible = (visible)=> {
+        this.setState({modalVisible: visible});
+    }
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
                 plus={this.incrementLife} minus={this.decrementLife}
                 />
-
-                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer}/>
+                <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
+                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
             </View>
         )
     }
