@@ -49,10 +49,10 @@ export default class PlayerView extends Component {
 
         let selectedPlayer = this.props.data[this.props.selectedKey]
 
-        bgColor = this.getBackgroundColor();
+
 
         return (
-            <View style={{ flex: 6, backgroundColor: bgColor }}>
+            <View style={{ flex: 6, backgroundColor: '#7fd3e0' }} >
 
 
                 <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
@@ -73,7 +73,6 @@ export default class PlayerView extends Component {
                         </TouchableOpacity>
 
                     </View>
-
                     <View>
                         <View style={{ flex: 1 }}>
                         </View>
@@ -81,58 +80,53 @@ export default class PlayerView extends Component {
 
                         <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
-                        <View style={styles.lifeScore}>
-                            <TouchableOpacity style={{ flex: 1, backgroundColor: 'red' }} onPress={() => this.props.openBackground(true)} />
-                            <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center' }}>
-                                <Text style={{ fontSize: 100, fontFamily: 'Teko-Bold' }}>{selectedPlayer.lifeTotal}</Text>
+                        <View style={{ flex: 1, }} />
+
+                    </View>
+                    <View style={{ flex: 2, }} >
+
+                        <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, }}>
+
+                            <View style={{ flex: 1, }} />
+
+                            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
+                                <Icon name="chevron-right" size={25} />
                             </View>
 
+                            <View style={{ flex: 1, }} />
 
-                        </View>
-                        <View style={{ flex: 2, }} >
-
-                            <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, }}>
-
-                                <View style={{ flex: 1, }} />
-
-                                <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
-                                    <Icon name="chevron-right" size={25} />
-                                </View>
-
-                                <View style={{ flex: 1, }} />
-
-                            </TouchableOpacity>
-
-                        </View>
-
-
+                        </TouchableOpacity>
 
                     </View>
 
-                    <View style={{ flex: .50, }} >
-                        <Text style={styles.playerName}>{selectedPlayer.name}</Text>
 
-                    </View>
-
-                    <SettingsBar />
-
-
-                    <View style={styles.counterBox}>
-                        <ScrollView >
-
-
-                            <TokenCounters />
-
-
-
-
-                        </ScrollView>
-
-
-                    </View>
 
                 </View>
+
+                <View style={{ flex: .50, }} >
+                    <Text style={styles.playerName}>{selectedPlayer.name}</Text>
+
+                </View>
+
+                <SettingsBar />
+
+
+                <View style={styles.counterBox}>
+                    <ScrollView >
+
+
+                        <TokenCounters />
+                        
+
+
+
+                    </ScrollView>
+
+
+                </View>
+
             </View>
+
 
 
         )
@@ -156,7 +150,9 @@ var styles = StyleSheet.create({
     },
 
     lifeScore: {
-        flex: 2,
+        textAlign: 'center',
+        fontSize: 90,
+        flex: 3
     },
 
     counterBox: {
