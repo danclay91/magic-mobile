@@ -31,7 +31,7 @@ export default class App extends Component {
         this.state = {
             data: [{name:'fred', lifeTotal: 20, key: 0},
                    {name:'daryll', lifeTotal: 30, key: 1}],
-            selectedKey: null,
+            selectedKey: 1,
         }
     }
 
@@ -83,7 +83,6 @@ export default class App extends Component {
      */
     selectPlayer = (key) => {
         const data = this.state.data;
-        alert(key);
         this.setState({
             //selectedPlayer: data[key], 
             selectedKey: key,
@@ -93,7 +92,6 @@ export default class App extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <PlayerView selectedKey={this.props.selectedKey} data={this.props.data} />
                 <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
                 plus={this.incrementLife} minus={this.decrementLife}
                 />

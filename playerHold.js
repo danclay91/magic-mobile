@@ -5,13 +5,8 @@ import {
     TouchableOpacity
 } from 'react-native'
 import Button from './playerButton.js'
-import AddButton from './addPlayer.js'
 
 export default class Hold extends Component {
-
-    /*onPressButton(){
-        alert("Button Pressed");
-    }*/
 
     render() {
         let playerButtons = ()=> {

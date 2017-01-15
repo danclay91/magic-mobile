@@ -1,9 +1,0 @@
-diff a/appContainer.js b/appContainer.js	(rejected hunks)
-@@ -32,6 +32,7 @@
-             data: [{name:'fred', lifeTotal: 20, key: 0},
-                    {name:'daryll', lifeTotal: 30, key: 1}],
-             selectedKey: null,
-+>>>>>>> origin/Micah
-         }
-     }
- 
