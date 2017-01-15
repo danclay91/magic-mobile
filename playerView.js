@@ -176,8 +176,8 @@ var styles = StyleSheet.create({
 
     playerName: {
         textAlign: 'center',
-        marginTop: 5,
-        fontSize: 15
+        marginTop: 0,
+        fontSize: 20
 
     },
 
