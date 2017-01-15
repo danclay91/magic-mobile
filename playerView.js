@@ -14,67 +14,6 @@ import SettingsBar from './settingsBar';
 
 export default class PlayerView extends Component {
 
-    /*Vityle={{ flex: 1, backgroundColor: 'white' }} >
-                       <Text style={styles.playerName}>{selectedPlaer.name}</Text>
-    
-                    </View>                  <View style={{ flex: 6, flexDirection: 'row', backgroundColor: 'orange' }} >
-    
-                        <View style={{ flex: 1, backgroundCol                    'red' }} >
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'yellow' }} >
-    
-                                <TouchableOpacity onPress={this.props.minus} style={{ flex: 1, backgroundColor: 'red' }}>
-                                    <Text style={styles.lifeButtons}>-</Text>
-    
-                                </TouchableOpacity>
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                        </View>
-    
-                        <View style={{ flex: 2, backgroundColor: 'pink' }} >
-    
-                            <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
-    
-                        </View>
-    
-    
-                        <View style={{ flex: 1, backgroundColor: 'green' }} >
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'yellow' }} >
-    
-                                <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, backgroundColor: 'green' }}>
-                                    <Text style={styles.lifeButtons}>+</Text>
-    
-                                </TouchableOpacity>
-    
-                            </View>
-    
-                            <View style={{ flex: 1, backgroundColor: 'orange' }} >
-    
-                            </View>
-    
-                        </View>
-    
-                    </View>
-    
-                    <View style={{ flex: 5, backgroundColor: 'blue' }} >
-    
-                    </View> */
-
-
 
     render() {
 
@@ -83,11 +22,11 @@ export default class PlayerView extends Component {
 
 
         return (
-            <View style={{ flex: 6, backgroundColor: 'pink' }} >
+            <View style={{ flex: 6, backgroundColor: '#7fd3e0' }} >
 
 
 
-                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'pink' }} >
+                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
 
 
 
@@ -105,11 +44,11 @@ export default class PlayerView extends Component {
 
                     </View>
                     <View>
-                        <View style={{ flex: 1, }} />
+                       <TouchableOpacity style={{ flex: 1, backgroundColor:'red' }}/>
 
                         <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
-                        <View style={{ flex: 1,}} />
+                        <View style={{ flex: 1, }} />
 
                     </View>
                     <View style={{ flex: 2, }} >
@@ -130,16 +69,15 @@ export default class PlayerView extends Component {
 
                 </View>
 
-                <View style={{ flex: .50,}} >
+                <View style={{ flex: .50, }} >
                     <Text style={styles.playerName}>{selectedPlayer.name}</Text>
 
                 </View>
 
-                <View style={{ flex: .75, backgroundColor: 'blue' }} >
-                </View>
+                <SettingsBar />
 
 
-                <View style={{ flex: 4, backgroundColor: 'yellow' }} />
+                <View style={styles.counterBox} />
 
             </View>
 
@@ -167,8 +105,15 @@ var styles = StyleSheet.create({
 
     lifeScore: {
         textAlign: 'center',
-        fontSize: 98,
+        fontSize: 90,
         flex: 3
     },
+
+    counterBox: {
+        flex: 4,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderColor: 'black'
+    }
 
 });
