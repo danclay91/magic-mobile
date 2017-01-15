@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import PlayerView from './playerViewD'
-import PlayerHolder from './playerHoldD'
+import PlayerHolder from './playerHold'
 
 /**
  * example of data --
@@ -18,6 +18,11 @@ import PlayerHolder from './playerHoldD'
  *
  */
 
+/**
+ * Base component which contains all other components.
+ * All app data is stored as state in this component. 
+ * Functions used to modify data are created here and then passed into other components as props. 
+ */
 export default class App extends Component {
 
     constructor(props) {
@@ -57,6 +62,10 @@ export default class App extends Component {
         })
     }
 
+    /**
+     * Function to pass to PlayerHolder to handle  
+     * 
+     */
     addPlayer = () => {
         let data = this.state.data; 
         const dataLength = data.length; 
@@ -85,7 +94,7 @@ export default class App extends Component {
             <View style={{ flex: 1, backgroundColor: 'red' }}>
                 <View style={{ flex: 6, backgroundColor: 'blue' }} />
 
-                <PlayerHolder />
+                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer}/>
             </View>
         )
     }
