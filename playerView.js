@@ -18,11 +18,16 @@ export default class PlayerView extends Component {
 
 
     render() {
+
+        let selectedPlayer = this.props.data[this.props.selectedKey]
+      
+
+
         return (
             <View style={{ flex: 6, backgroundColor: 'blue' }} >
 
                 <View style={{ flex: 1, backgroundColor: 'white' }} >
-                    <Text style={styles.playerName}>Player Name</Text>
+                    <Text style={styles.playerName}>{selectedPlayer.name}</Text>
 
                 </View>
 
@@ -36,7 +41,7 @@ export default class PlayerView extends Component {
 
                         <View style={{ flex: 1, backgroundColor: 'yellow' }} >
 
-                            <TouchableOpacity onPress={_onPressButton} style={{ flex: 1, backgroundColor: 'red' }}>
+                            <TouchableOpacity onPress={this.props.minus} style={{ flex: 1, backgroundColor: 'red' }}>
                                 <Text style={styles.lifeButtons}>-</Text>
 
                             </TouchableOpacity>
@@ -51,7 +56,7 @@ export default class PlayerView extends Component {
 
                     <View style={{ flex: 2, backgroundColor: 'pink' }} >
 
-                        <Text style={styles.lifeScore}>40</Text>
+                        <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
                     </View>
 
@@ -64,7 +69,7 @@ export default class PlayerView extends Component {
 
                         <View style={{ flex: 1, backgroundColor: 'yellow' }} >
 
-                            <TouchableOpacity style={{ flex: 1, backgroundColor: 'green' }}>
+                            <TouchableOpacity onPress={this.props.plus} style={{ flex: 1, backgroundColor: 'green' }}>
                                 <Text style={styles.lifeButtons}>+</Text>
 
                             </TouchableOpacity>
@@ -93,10 +98,6 @@ export default class PlayerView extends Component {
 
 
 
-function _onPressButton() {
-
-    alert("It Works");
-}
 
 
 
