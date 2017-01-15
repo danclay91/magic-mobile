@@ -5,7 +5,7 @@ import {
     StyleSheet
 } from 'react-native'
 
-import PlayerView from './playerViewD'
+import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 
 /**
@@ -30,7 +30,7 @@ export default class App extends Component {
 
         this.state = {
             data: [],
-            selectedID: null,
+            selectedKey: null,
         }
     }
 
@@ -70,7 +70,7 @@ export default class App extends Component {
         let data = this.state.data; 
         const dataLength = data.length; 
 
-        data.push({name:"player", lifeTotal: 20, id: dataLength}); 
+        data.push({name:"player", lifeTotal: 20, id: dataLength, key: dataLength}); 
 
         this.setState({
             data: data, 
@@ -92,7 +92,7 @@ export default class App extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <View style={{ flex: 6, backgroundColor: 'blue' }} />
+                <PlayerView selectedKey={this.props.selectedKey} data={this.props.data} />
 
                 <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer}/>
             </View>
