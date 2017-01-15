@@ -9,6 +9,7 @@ import {
   AppRegistry,
 } from 'react-native';
 
+<<<<<<< HEAD
 import App from './appContainer'; 
 
 
