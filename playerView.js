@@ -4,11 +4,16 @@ import {
     Image,
     View,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    ScrollView
 
 } from 'react-native'
 
 import SettingsBar from './settingsBar';
+
+import TokenCounters from './tokenCounters';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class PlayerView extends Component {
 
@@ -31,7 +36,9 @@ export default class PlayerView extends Component {
 
                             <View style={{ flex: 1, }} />
 
-                            <Text style={styles.lifeButtons}>-</Text>
+                            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
+                                <Icon name="chevron-left" size={25} />
+                            </View>
 
                             <View style={{ flex: 1, }} />
 
@@ -39,7 +46,9 @@ export default class PlayerView extends Component {
 
                     </View>
                     <View>
-                       <TouchableOpacity style={{ flex: 1, backgroundColor:'red' }}/>
+                        <View style={{ flex: 1 }}>
+                        </View>
+
 
                         <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
 
@@ -52,7 +61,9 @@ export default class PlayerView extends Component {
 
                             <View style={{ flex: 1, }} />
 
-                            <Text style={styles.lifeButtons}>+</Text>
+                            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
+                                <Icon name="chevron-right" size={25} />
+                            </View>
 
                             <View style={{ flex: 1, }} />
 
@@ -72,7 +83,19 @@ export default class PlayerView extends Component {
                 <SettingsBar />
 
 
-                <View style={styles.counterBox} />
+                <View style={styles.counterBox}>
+                    <ScrollView >
+
+
+                        <TokenCounters />
+                        
+
+
+
+                    </ScrollView>
+
+
+                </View>
 
             </View>
 
@@ -106,9 +129,21 @@ var styles = StyleSheet.create({
 
     counterBox: {
         flex: 4,
-        backgroundColor: 'white',
+        backgroundColor: '#325182',
         borderWidth: 2,
-        borderColor: 'black'
+        borderColor: 'black',
+        borderBottomWidth: 0
+    },
+
+    counterItem: {
+        height: 56,
+        backgroundColor: '#d0d5dd',
+        borderColor: 'black',
+        borderWidth: 1,
+        flex: 5,
+        flexDirection: 'row'
+
+
     }
 
 });

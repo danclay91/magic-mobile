@@ -18,6 +18,7 @@ export default class Button extends Component {
         return (
             <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} >
                 <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
+                 <Text style={{textAlign:'center', fontSize:20, marginTop: 20,}}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
         )
     }
@@ -33,7 +34,10 @@ var styles = StyleSheet.create({
     },
     playerTabNames: {
         textAlign: 'center',
-        textDecorationLine: 'underline'
-    }
+        textDecorationLine: 'underline',
+        marginTop:0
+    },
+
+    
 })
 
