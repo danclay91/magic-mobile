@@ -29,8 +29,8 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            data: [{name:'fred', lifeTotal: 20, key: 0},
-                   {name:'daryll', lifeTotal: 30, key: 1}],
+            data: [{name:'Fred', lifeTotal: 20, key: 0},
+                   {name:'Daryll', lifeTotal: 30, key: 1}],
             selectedKey: 1,
         }
     }
