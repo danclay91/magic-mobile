@@ -17,13 +17,13 @@ import FounIcon from 'react-native-vector-icons/Foundation';
 
 
 
-export default class TokenCounters extends Component {
+export default class BasicCounters extends Component {
 
     render() {
         return (
             <View style={{
                 height: 56,
-                backgroundColor: '#e8ecf2',
+                backgroundColor: '#a3a7af',
                 borderColor: '#babdc1',
                 borderWidth: 4,
                 borderRadius: 15,
@@ -34,13 +34,13 @@ export default class TokenCounters extends Component {
                 marginLeft:1,
                 marginRight:1
             }}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#618eb5', borderRadius:80, marginTop:1, marginBottom:1, marginLeft:1 }}>
-                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}>5</Text>
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#b9bc54', borderRadius:80, marginTop:1, marginBottom:1, marginLeft:1 }}>
+                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}>10</Text>
 
                 </View>
 
                 <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center'  }}>
-                    <Text style={{ color: 'black', fontSize:20, fontFamily:'Teko-Medium' }}>Angel 3/3</Text>
+                    <Text style={{ color: 'black', fontSize:20, fontFamily:'Teko-Medium' }}>Exp Counters</Text>
 
 
                 </View>

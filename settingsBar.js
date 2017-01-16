@@ -17,67 +17,69 @@ export default class SettingsBar extends Component {
             <View style={{
                 flex: .75,
                 flexDirection: 'row',
-                backgroundColor: 'gray',
+                backgroundColor: '#babdc1',
                 borderWidth: 2,
                 borderLeftWidth: 1,
 
                 borderColor: 'black'
             }}>
 
-                <View style={{ flex: .5 }} />
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <FounIcon name="refresh" size={30} color="white" />
+
+
+
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="contrast" size={25} />
                     </View>
                 </TouchableOpacity>
 
-                <View style={{ flex: .5 }} />
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <FounIcon name="paint-bucket" size={30} color="white" />
-                    </View>
-                </TouchableOpacity>
-
-                <View style={{ flex: .5 }} />
-
-
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <FounIcon name="die-six" size={30} color="white" />
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="die-six" size={25} />
                     </View>
 
 
 
                 </TouchableOpacity>
 
-                <View style={{ flex: .5 }} />
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <FounIcon name="page-multiple" size={30} color="white" />
-                    </View>
-                </TouchableOpacity>
-
-                <View style={{ flex: .5 }} />
-
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <FounIcon name="contrast" size={30} color="white" />
-                    </View>
-                </TouchableOpacity>
-
-                <View style={{ flex: .5 }} />
-
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        <Icon name="heartbeat" size={30} color="white" />
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <Icon name="heartbeat" size={25} />
                     </View>
                 </TouchableOpacity>
 
 
-                <View style={{ flex: .5 }} />
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="page-multiple" size={25} />
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="paint-bucket" size={25} />
+                    </View>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="refresh" size={25} />
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View>
+                        <FounIcon name="widget" size={25} />
+                    </View>
+                </TouchableOpacity>
+
+
+
             </View>
         )
     }

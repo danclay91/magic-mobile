@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 
 import SettingsBar from './settingsBar';
-
+import BasicCounters from './basicCounters';
 import TokenCounters from './tokenCounters';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -52,10 +52,10 @@ export default class PlayerView extends Component {
 
 
         return (
-            <View style={{ flex: 6, backgroundColor: '#7fd3e0' }} >
+            <View style={{ flex: 6, backgroundColor: '#3c7387' }} >
 
 
-                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#7fd3e0' }} >
+                <View style={{ flex: 3, flexDirection: 'row', backgroundColor: '#3c7387' }} >
 
 
                     <View style={{ flex: 2, }} >
@@ -65,7 +65,7 @@ export default class PlayerView extends Component {
                             <View style={{ flex: 1, }} />
 
                             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
-                                <Icon name="chevron-left" size={25} />
+                                <Icon name="chevron-left" size={25} color={'white'}/>
                             </View>
 
                             <View style={{ flex: 1, }} />
@@ -90,7 +90,7 @@ export default class PlayerView extends Component {
                             <View style={{ flex: 1, }} />
 
                             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10, flex: 1 }}>
-                                <Icon name="chevron-right" size={25} />
+                                <Icon name="chevron-right" size={25} color={'white'} />
                             </View>
 
                             <View style={{ flex: 1, }} />
@@ -103,8 +103,13 @@ export default class PlayerView extends Component {
 
                 </View>
 
-                <View style={{ flex: .50, }} >
-                    <Text style={styles.playerName}>{selectedPlayer.name}</Text>
+                <View style={{ flex: .50, alignItems: 'center', justifyContent: 'center' }} >
+                    <Text style={{
+                        textAlign: 'center',
+                        fontSize: 20,
+                        fontFamily: 'Teko-Medium',
+                        color:'white'
+                    }}>{selectedPlayer.name}</Text>
 
                 </View>
 
@@ -116,12 +121,17 @@ export default class PlayerView extends Component {
 
 
                         <TokenCounters />
+                        <BasicCounters />
                         <TokenCounters />
+                        <BasicCounters />
                         <TokenCounters />
+                        <BasicCounters />
                         <TokenCounters />
+                        <BasicCounters />
                         <TokenCounters />
+                        <BasicCounters />
                         <TokenCounters />
-                        
+
 
 
 
@@ -150,24 +160,27 @@ var styles = StyleSheet.create({
     playerName: {
         textAlign: 'center',
         marginTop: 0,
-        fontSize: 20
+        fontSize: 20,
+        color:'#babdc1'
 
     },
 
     lifeScore: {
         textAlign: 'center',
         fontSize: 90,
-        flex: 3
+        flex: 3,
+        fontFamily: 'Teko-Medium',
+        color: 'white'
     },
 
     counterBox: {
         flex: 4,
-        backgroundColor: 'white',
+        backgroundColor: '#505256',
         borderWidth: 0,
         borderColor: 'black',
         borderBottomWidth: 0
     },
 
-   
+
 
 });

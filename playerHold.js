@@ -32,14 +32,14 @@ export default class Hold extends Component {
                         <View style={{ alignItems: 'center', justifyContent: 'center'}}>
                             <FounIcon name="torsos-all" size={25} />
                         </View>
-                        <Text style={{ color: 'black', textAlign: 'center' }}>Add Player</Text>
+                        <Text style={{ color: 'black', textAlign: 'center', fontFamily: 'Teko-Light' }}>Add Player</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
 
                         <View style={{ alignItems: 'center', justifyContent: 'center',}}>
                             <FounIcon name="results-demographics" size={25} />
                         </View>
-                        <Text style={{ color: 'black', textAlign: 'center' }}>Edit Players</Text>
+                        <Text style={{ color: 'black', textAlign: 'center', fontFamily: 'Teko-Light' }}>Edit Players</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.playerContainer}>
@@ -55,7 +55,7 @@ export default class Hold extends Component {
 const styles = StyleSheet.create({
     playerContainer: {
         flex: 2,
-        backgroundColor: '#e8ecf2',
+        backgroundColor: '#505256',
         flexDirection: 'row',
     },
     settingsContainer: {
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderTopWidth:2,
         borderColor: 'black',
+      
        
         
 
