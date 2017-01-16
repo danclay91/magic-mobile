@@ -116,6 +116,11 @@ export default class PlayerView extends Component {
 
 
                         <TokenCounters />
+                        <TokenCounters />
+                        <TokenCounters />
+                        <TokenCounters />
+                        <TokenCounters />
+                        <TokenCounters />
                         
 
 
@@ -157,21 +162,12 @@ var styles = StyleSheet.create({
 
     counterBox: {
         flex: 4,
-        backgroundColor: '#325182',
-        borderWidth: 2,
+        backgroundColor: 'white',
+        borderWidth: 0,
         borderColor: 'black',
         borderBottomWidth: 0
     },
 
-    counterItem: {
-        height: 56,
-        backgroundColor: '#d0d5dd',
-        borderColor: 'black',
-        borderWidth: 1,
-        flex: 5,
-        flexDirection: 'row'
-
-
-    }
+   
 
 });

@@ -26,7 +26,7 @@ export default class Hold extends Component {
             return allPlayers;
         }
         return (
-            <View style={{ flex: 2, backgroundColor: '#325182' }}>
+            <View style={{ flex: 2, backgroundColor: 'white' }}>
                 <View style={styles.settingsContainer}>
                     <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
                         <View style={{ alignItems: 'center', justifyContent: 'center'}}>
@@ -37,7 +37,7 @@ export default class Hold extends Component {
                     <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
 
                         <View style={{ alignItems: 'center', justifyContent: 'center',}}>
-                            <Icon name="pencil-square-o" size={25} />
+                            <FounIcon name="results-demographics" size={25} />
                         </View>
                         <Text style={{ color: 'black', textAlign: 'center' }}>Edit Players</Text>
                     </TouchableOpacity>
@@ -55,8 +55,8 @@ export default class Hold extends Component {
 const styles = StyleSheet.create({
     playerContainer: {
         flex: 2,
-        backgroundColor: 'transparent',
-        flexDirection: 'row'
+        backgroundColor: '#e8ecf2',
+        flexDirection: 'row',
     },
     settingsContainer: {
         flex: 1,
@@ -65,20 +65,18 @@ const styles = StyleSheet.create({
     addPlayer: {
         flex: 1,
         backgroundColor: '#babdc1',
-        borderLeftWidth: 2,
-        borderRightWidth: 1,
-        borderBottomWidth: 2,
-        borderTopWidth: 2,
-        borderColor: 'black'
+        borderWidth:1,
+        borderTopWidth:2,
+        borderColor: 'black',
+       
+        
 
     },
     editPlayer: {
         flex: 1,
         backgroundColor: '#babdc1',
-        borderRightWidth: 2,
-        borderBottomWidth: 2,
-        borderLeftWidth: 1,
-        borderTopWidth: 2,
-        borderColor: 'black'
+        borderWidth:1,
+        borderTopWidth:2,
+        
     }
 });
