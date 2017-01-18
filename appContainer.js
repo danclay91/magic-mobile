@@ -31,14 +31,14 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            data: [{name:'Fred', lifeTotal: 20, color: null, key: 0},
-                   {name:'Daryll', lifeTotal: 30, color:null,  key: 1}],
+            data: [{ name: 'Fred', lifeTotal: 20, color: null, key: 0 },
+            { name: 'Daryll', lifeTotal: 30, color: null, key: 1 }],
+            tokens: [{ defaultToke: 5, key: 0 }, { defaultToke: 5, key: 1 }],
             selectedKey: 1,
-            modalVisible: false, 
-            backgroundModalVisible: false, 
-            settings:{
-                defaultLife: 20, 
-                
+            modalVisible: false,
+            backgroundModalVisible: false,
+            settings: {
+                defaultLife: 20,
             }
         }
     }
@@ -46,15 +46,15 @@ export default class App extends Component {
     /**
      * 
      */
-    resetLife = () =>{
-        data = this.state.data; 
+    resetLife = () => {
+        data = this.state.data;
 
-        data.forEach(function(player) {
-            player.lifeTotal=0; 
+        data.forEach(function (player) {
+            player.lifeTotal = 0;
         }, this);
 
         this.setState({
-            data:data
+            data: data
         });
     }
 
@@ -91,13 +91,13 @@ export default class App extends Component {
      * 
      */
     addPlayer = () => {
-        let data = this.state.data; 
-        const dataLength = data.length; 
+        let data = this.state.data;
+        const dataLength = data.length;
 
-        data.push({name:"player", lifeTotal: 20, id: dataLength, key: dataLength}); 
+        data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength });
 
         this.setState({
-            data: data, 
+            data: data,
         })
     }
 
@@ -112,33 +112,54 @@ export default class App extends Component {
         });
     }
 
-    setColor = (color) =>{
-        let data = this.state.data; 
-        data[this.state.selectedKey].color = color; 
+    setColor = (color) => {
+        let data = this.state.data;
+        data[this.state.selectedKey].color = color;
 
         this.setState({
-            data:data, 
+            data: data,
         })
 
     }
 
-    setModalVisible = (visible)=> {
-        this.setState({modalVisible: visible});
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
     }
 
-    setBackGroundModalVisible = (visible)=>{
-        this.setState({backgroundModalVisible: visible}); 
+    setBackGroundModalVisible = (visible) => {
+        this.setState({ backgroundModalVisible: visible });
+    }
+
+    //function for decrementing token value - passed to playerview - not working currently
+    decrementToke = () => {
+        let tokens = this.state.tokens;
+        tokens.defaultToke--;
+
+        this.setState({
+            tokens: tokens,
+        })
+    }
+    // function for adding a token counter. No opacity uses this yet.
+    addToken = () => {
+        let tokens = this.state.tokens;
+        const tokensLength = tokens.length;
+
+        tokens.push({ defaultToke: 5, key: dataLength });
+
+        this.setState({
+            tokens: tokens,
+        })
     }
 
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
-                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
-                />
-                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
-                <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
-                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
+                <PlayerView selectedKey={this.state.selectedKey} data={this.state.data}
+                    plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
+                    tokens={this.state.tokens} minToken={this.state.decrementToke} />
+                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor} />
+                <Edit modalVisible={this.state.modalVisible} setModalVisible={this.setModalVisible} />
+                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible} />
             </View>
         )
     }

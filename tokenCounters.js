@@ -35,7 +35,7 @@ export default class TokenCounters extends Component {
                 marginRight:1
             }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#618eb5', borderRadius:80, marginTop:1, marginBottom:1, marginLeft:1 }}>
-                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}>5</Text>
+                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}>{this.props.tokens.defaultToke} </Text>
 
                 </View>
 
@@ -47,7 +47,7 @@ export default class TokenCounters extends Component {
 
                 <View style={{ flex: .50, }}>
 
-                    <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={this.props.minus} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
                         <View>
                             <FounIcon name="minus" size={25} color="#fca9a9" />
                         </View>
@@ -56,7 +56,7 @@ export default class TokenCounters extends Component {
                 </View>
 
                 <View style={{ flex: 1, }}>
-                    <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={this.props.plus} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
                         <View>
                             <FounIcon name="plus" size={25} color="#bcdbbe" />
                         </View>

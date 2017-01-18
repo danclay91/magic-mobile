@@ -46,6 +46,15 @@ export default class PlayerView extends Component {
     }
 
     render() {
+//generates token buttons from objects in tokens[] found in appContianer, maps well.
+         let tokenButtons = () => {
+            let allTokens = this.props.tokens.map((count, index) => {
+                return (
+                    <TokenCounters tokens={this.props.tokens} key={index} _count = {count} minus={this.props.minToken} plus={this.props.plusToken} addToken={this.props.addToken} />
+                )
+            })
+            return allTokens;
+        }
 
         let selectedPlayer = this.props.data[this.props.selectedKey]
 
@@ -118,23 +127,7 @@ export default class PlayerView extends Component {
 
                 <View style={styles.counterBox}>
                     <ScrollView >
-
-
-                        <TokenCounters />
-                        <BasicCounters />
-                        <TokenCounters />
-                        <BasicCounters />
-                        <TokenCounters />
-                        <BasicCounters />
-                        <TokenCounters />
-                        <BasicCounters />
-                        <TokenCounters />
-                        <BasicCounters />
-                        <TokenCounters />
-
-
-
-
+                    {tokenButtons()}
                     </ScrollView>
 
 
@@ -184,3 +177,13 @@ var styles = StyleSheet.create({
 
 
 });
+
+                        /*<TokenCounters />
+                        <BasicCounters />
+                        <TokenCounters />
+                        <BasicCounters />
+                        <TokenCounters />
+                        <BasicCounters />
+                        <TokenCounters />
+                        <BasicCounters />
+                        <TokenCounters />*/
