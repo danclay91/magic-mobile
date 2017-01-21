@@ -50,7 +50,7 @@ export default class PlayerView extends Component {
          let tokenButtons = () => {
             let allTokens = this.props.tokens.map((count, index) => {
                 return (
-                    <TokenCounters tokens={this.props.tokens} key={index} _count = {count} minus={this.props.minToken} plus={this.props.plusToken} addToken={this.props.addToken} />
+                    <TokenCounters tokens={this.props.tokens[index]} key={index} _count = {count} minus={this.props.minToken} plus={this.props.plusToken} addToken={this.props.addToken} />
                 )
             })
             return allTokens;

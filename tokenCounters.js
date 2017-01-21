@@ -20,6 +20,7 @@ import FounIcon from 'react-native-vector-icons/Foundation';
 export default class TokenCounters extends Component {
 
     render() {
+        alert(this.props.tokens);
         return (
             <View style={{
                 height: 56,
