@@ -30,50 +30,57 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: .50, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRightWidth:1 }}>
                     <View>
                         <FounIcon name="contrast" size={25} />
+
                     </View>
                 </TouchableOpacity>
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View>
-                        <FounIcon name="die-six" size={25} />
+
+
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1  }}>
+
+                    <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
+
+                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+
                     </View>
 
 
+                    <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{fontFamily:'Teko-Medium', fontSize:20}}>Tokens</Text>
+                    </View>
 
                 </TouchableOpacity>
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View>
-                        <Icon name="heartbeat" size={25} />
+
+
+
+
+
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1 }}>
+
+                    <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
+
+                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+
                     </View>
+
+
+                    <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{fontFamily:'Teko-Medium', fontSize:20}}>Counters</Text>
+                    </View>
+
                 </TouchableOpacity>
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View>
-                        <FounIcon name="page-multiple" size={25} />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View>
-                        <FounIcon name="paint-bucket" size={25} />
-                    </View>
-                </TouchableOpacity>
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View>
-                        <FounIcon name="refresh" size={25} />
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: .50, alignItems: 'center', justifyContent: 'center', borderLeftWidth:1 }}>
                     <View>
                         <FounIcon name="widget" size={25} />
                     </View>

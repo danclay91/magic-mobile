@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import {
     View,
     StyleSheet,
-    Text
+    Text,
+    ScrollView
 } from 'react-native'
 
 import PlayerView from './playerView'
@@ -12,6 +13,10 @@ import Edit from './editModal.js'
 import BackgroundModal from './backgroundModal'
 import LifeTotalBox from './lifeTotalBox'
 import PlayerName from './playerName'
+import SettingsBar from './settingsBar'
+import CounterContainer from './counterContainer'
+import TokenCounters from './tokenCounters'
+import BasicCounters from './basicCounters'
 
 /**
  * example of data --
@@ -158,23 +163,20 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
+
                 <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
 
-                <View style = {{flex:1, backgroundColor: 'blue'}} >
-                    <Text>addPlayer</Text> 
+                <View style={{ flex: 1, backgroundColor: 'blue' }} >
+                    <Text>addPlayer</Text>
                 </View>
 
-                <View style = {{flex:1.50, backgroundColor: 'green'}}>
+                <View style={{ flex: 1.50, backgroundColor: 'green' }}>
                     <Text>Player buttons </Text>
                 </View>
 
-                <View style = {{flex: 5, backgroundColor: 'pink'}}>
-                    <Text>Counter Container</Text>
-                </View>
-
-                <View style = {{flex:1, backgroundColor:"blue"}}>
-                    <Text>Settings Bar</Text>
-                </View> 
+                <CounterContainer/>
+                 
+                <SettingsBar />
             </View>
         )
     }
