@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    Text
 } from 'react-native'
 
 import PlayerView from './playerView'
@@ -135,12 +136,25 @@ export default class App extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
-                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
-                />
-                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
-                <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
-                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
+                <View style = {{flex:4.50, backgroundColor:'red'}}>
+                    <Text>lifeTotalBox</Text>
+                </View>
+
+                <View style = {{flex:1, backgroundColor: 'blue'}} >
+                    <Text>addPlayer</Text> 
+                </View>
+
+                <View style = {{flex:1.50, backgroundColor: 'green'}}>
+                    <Text>Player buttons </Text>
+                </View>
+
+                <View style = {{flex: 5, backgroundColor: 'pink'}}>
+                    <Text>Counter Container</Text>
+                </View>
+
+                <View style = {{flex:1, backgroundColor:"blue"}}>
+                    <Text>Settings Bar</Text>
+                </View> 
             </View>
         )
     }
@@ -155,3 +169,14 @@ var styles = StyleSheet.create({
 
 
 })
+
+/**
+ * Old render return 
+ * 
+ *   <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
+                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
+                />
+                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
+                <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
+                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
+ */
