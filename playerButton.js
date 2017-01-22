@@ -40,14 +40,41 @@ export default class Button extends Component {
         return backgroundColor;
     }
 
+    lifeRed() {
+        lifeTotal = this.props.player.lifeTotal
+
+        var color;
+
+
+        if (lifeTotal > 5 && lifeTotal <= 10) {
+            color = "#eda90b"
+        }
+        else if (lifeTotal <= 5) {
+            color = 'red';
+        }
+        else {
+            color = 'black';
+        }
+
+        return color;
+    }
+
+
+
+
+
+
+
+
 
     render() {
         let bgColor = this.getBackgroundColor();
+        let fontColor = this.lifeRed();
 
         return (
             <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} >
                 <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
-                <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color:'black' }}>{this.props.player.lifeTotal}</Text>
+                <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color: fontColor }}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
         )
     }
@@ -59,21 +86,21 @@ var styles = StyleSheet.create({
         borderRightWidth: 1,
         borderBottomWidth: 1,
         borderLeftWidth: 1,
-        borderTopWidth:1,
-        backgroundColor:'#babdc1',
+        borderTopWidth: 1,
+        backgroundColor: '#505256',
         flex: 1,
-        alignItems:'center',
+        alignItems: 'center',
         justifyContent: 'center'
 
-        
-        
+
+
     },
     playerTabNames: {
         textAlign: 'center',
         textDecorationLine: 'underline',
         fontFamily: 'Teko-Light',
         fontSize: 25,
-        flex:2,
+        flex: 2,
         color: 'black'
     },
 

@@ -15,7 +15,7 @@ export default class CounterContainer extends Component {
     render() {
         return (
             <View style={{
-                flex: 5,
+                flex: 5.25,
                 backgroundColor: '#505256',
                 borderWidth: 0,
                 borderColor: 'black',

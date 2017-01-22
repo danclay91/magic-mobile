@@ -32,7 +32,7 @@ export default class SettingsBar extends Component {
 
                 <TouchableOpacity onPress={this.props.resetLife} style={{ flex: .50, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRightWidth:1 }}>
                     <View>
-                        <FounIcon name="contrast" size={25} />
+                        <FounIcon name="contrast" size={25} color='black' />
 
                     </View>
                 </TouchableOpacity>
@@ -45,13 +45,13 @@ export default class SettingsBar extends Component {
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
 
-                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+                        <FounIcon name="plus" size={25} color="#046b10" />
 
                     </View>
 
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center'}}>
-                        <Text style={{fontFamily:'Teko-Medium', fontSize:20}}>Tokens</Text>
+                        <Text style={{fontFamily:'Teko-Medium', fontSize:20, color:'black'}}>Tokens</Text>
                     </View>
 
                 </TouchableOpacity>
@@ -66,13 +66,13 @@ export default class SettingsBar extends Component {
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
 
-                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+                        <FounIcon name="plus" size={25} color="#046b10" />
 
                     </View>
 
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center'}}>
-                        <Text style={{fontFamily:'Teko-Medium', fontSize:20}}>Counters</Text>
+                        <Text style={{fontFamily:'Teko-Medium', fontSize:20, color:'black'}}>Counters</Text>
                     </View>
 
                 </TouchableOpacity>
@@ -82,7 +82,7 @@ export default class SettingsBar extends Component {
 
                 <TouchableOpacity onPress={this.props.resetLife} style={{ flex: .50, alignItems: 'center', justifyContent: 'center', borderLeftWidth:1 }}>
                     <View>
-                        <FounIcon name="widget" size={25} />
+                        <FounIcon name="widget" size={25} color='black' />
                     </View>
                 </TouchableOpacity>
 

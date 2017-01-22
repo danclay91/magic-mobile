@@ -17,6 +17,8 @@ import SettingsBar from './settingsBar'
 import CounterContainer from './counterContainer'
 import TokenCounters from './tokenCounters'
 import BasicCounters from './basicCounters'
+import CoinRoller from './coinRoller'
+import ModalMR from './modalMR'
 
 /**
  * example of data --
@@ -168,7 +170,7 @@ export default class App extends Component {
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
 
-                <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
+                <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey} minus={this.decrementLife} plus={this.incrementLife}/>
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
                     <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
@@ -182,7 +184,7 @@ export default class App extends Component {
                     modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
                     setColor={this.setColor} deletePlayer={this.deletePlayer}/>
 
-                <CounterContainer/>
+                <CoinRoller/>
                  
                 <SettingsBar />
 

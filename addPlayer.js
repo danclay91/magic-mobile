@@ -16,14 +16,14 @@ export default class AddPlayer extends Component {
             <View style={styles.settingsContainer}>
                 <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
                     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <FounIcon name="torsos-all" size={25} />
+                        <FounIcon name="torsos-all" size={20} color='black'/>
                     </View>
                     <Text style={{ color: 'black', textAlign: 'center', fontFamily: 'Teko-Light' }}>Add Player</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
 
                     <View style={{ alignItems: 'center', justifyContent: 'center', }}>
-                        <FounIcon name="results-demographics" size={25} />
+                        <FounIcon name="results-demographics" size={20} color='black'/>
                     </View>
                     <Text style={{ color: 'black', textAlign: 'center', fontFamily: 'Teko-Light' }}>Edit Players</Text>
                 </TouchableOpacity>
