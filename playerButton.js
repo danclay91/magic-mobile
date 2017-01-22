@@ -47,7 +47,7 @@ export default class Button extends Component {
         return (
             <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} >
                 <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
-                <Text style={{ textAlign: 'center', fontSize: 35, fontFamily: 'Teko-Medium', flex: 1, color:'black' }}>{this.props.player.lifeTotal}</Text>
+                <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color:'black' }}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
         )
     }
@@ -57,7 +57,7 @@ var styles = StyleSheet.create({
     playerTab: {
         width: 90,
         borderRightWidth: 1,
-        borderBottomWidth: 0,
+        borderBottomWidth: 1,
         borderLeftWidth: 1,
         borderTopWidth:1,
         backgroundColor:'#babdc1',

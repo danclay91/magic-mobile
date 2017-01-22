@@ -6,7 +6,7 @@ import {
     Text,
     ScrollView
 } from 'react-native'
-
+import AddPlayer from './addPlayer.js'
 import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
@@ -108,7 +108,11 @@ export default class App extends Component {
             data: data,
         })
     }
-
+    deletePlayer = () =>{
+        let data = this.state.data;
+        const index = data.key;
+        data.splice({index: 1})
+    }
     /**
      * Function to pass to PlayerButton to handle selecting/clicking players. 
      */
@@ -167,16 +171,21 @@ export default class App extends Component {
                 <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
-                    <Text>addPlayer</Text>
+                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
                 </View>
 
                 <View style={{ flex: 1.50, backgroundColor: 'green' }}>
-                    <Text>Player buttons </Text>
+                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
                 </View>
+
+                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
+                    modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
+                    setColor={this.setColor} deletePlayer={this.deletePlayer}/>
 
                 <CounterContainer/>
                  
                 <SettingsBar />
+
             </View>
         )
     }
@@ -185,7 +194,7 @@ export default class App extends Component {
 /**
  * Old render return 
  * 
- *   <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
+ *              <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
                 plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
                 />
                 <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>

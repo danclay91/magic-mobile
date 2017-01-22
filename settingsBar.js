@@ -16,7 +16,7 @@ export default class SettingsBar extends Component {
 
         return (
             <View style={{
-                flex: .75,
+                flex: 1,
                 flexDirection: 'row',
                 backgroundColor: '#babdc1',
                 borderWidth: 2,

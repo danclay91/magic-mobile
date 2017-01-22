@@ -13,7 +13,7 @@ export default class backgroundModal extends Component {
 
     getIconStyle(color) {
         let player = this.props.data[this.props.selectedKey];
-        return (player.color == color) ? styles.manaIconSelected : styles.manaIcon;
+        //return (player.color == color) ? styles.manaIconSelected : styles.manaIcon;
     }
 
 
@@ -32,7 +32,7 @@ export default class backgroundModal extends Component {
                     <View style={{ flex: 1, }} />
 
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <TouchableOpacity onPress={()=>this.props.setColor('w')}>
+                        <TouchableOpacity onPress={this.props.deletePlayer}>
                             <Image
                                 source={require("./resource/mtg-white.png")}
                                 style={this.getIconStyle('w')}
