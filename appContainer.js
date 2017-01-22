@@ -16,6 +16,8 @@ import CounterContainer from './counterContainer'
 import TokenCounters from './tokenCounters'
 import BasicCounters from './basicCounters'
 import PlayerNameModal from './playerNameModal'
+import EditCounterModal from './editCounterModal'
+
 
 /**
  * example of data --
@@ -38,17 +40,57 @@ export default class App extends Component {
         super(props)
 
         this.state = {
-            data: [{ name: 'Fred', lifeTotal: 20, color: null, key: 0 },
-            { name: 'Daryll', lifeTotal: 30, color: null, key: 1 }],
-            tokens: [{ defaultToke: 5, key: 0 }, { defaultToke: 5, key: 1 }],
+            data: [
+                {
+                    name: 'Fred', lifeTotal: 20, color: null, key: 0, counters: [
+                        { name: "Angel 3/3", type: "token", value: 3 },
+                        { name: "EXP Counter", type: "counter", value: 10 },
+                    ]
+                },
+
+                {
+                    name: 'Daryll', lifeTotal: 30, color: null, key: 1, counters: [
+                        { name: "Demon 4/2", type: "token", value: 6 },
+                        { name: "Poison Counter", type: "counter", value: 3 },
+                    ]
+                }],
+            showCounters: true, 
+            counterIndex:0,
             selectedKey: 1,
             modalVisible: false,
             backgroundModalVisible: false,
-            playerNameModalVisible: false, 
+            playerNameModalVisible: false,
+            editCounterModalVisible: false,
             settings: {
                 defaultLife: 20,
             }
         }
+    }
+
+    /**
+     * Used to reduce a counters value by 1. 
+     */
+    minusCounterValue = (index) => {
+        data = this.state.data;
+
+        data[this.state.selectedKey].counters[index].value--;
+
+        this.setState({
+            data: data,
+        })
+    }
+
+    /**
+    * Used to reduce a counters value by 1. 
+    */
+    plusCounterValue = (index) => {
+        data = this.state.data;
+
+        data[this.state.selectedKey].counters[index].value++;
+
+        this.setState({
+            data: data,
+        })
     }
 
     /**
@@ -118,13 +160,13 @@ export default class App extends Component {
     /**
      * Used to change player name. 
      */
-    setPlayerName = (name) =>{
-        let data = this.state.data; 
-        
-        data[this.state.selectedKey].name = name; 
+    setPlayerName = (name) => {
+        let data = this.state.data;
+
+        data[this.state.selectedKey].name = name;
 
         this.setState({
-            data: data, 
+            data: data,
         })
     }
 
@@ -153,6 +195,19 @@ export default class App extends Component {
         this.setState({ modalVisible: visible });
     }
 
+    setEditCounterModalVisible = (visible,index) => {
+        this.setState({
+            editCounterModalVisible: visible, 
+        })
+
+        if(visible && index!=null){
+           
+            this.setState({
+                counterIndex: index
+            })
+        }
+    }
+
     setPlayerNameModalVisible = (visible) => {
         this.setState({
             playerNameModalVisible: visible
@@ -163,34 +218,59 @@ export default class App extends Component {
         this.setState({ backgroundModalVisible: visible });
     }
 
-    //function for decrementing token value - passed to playerview - not working currently
-    decrementToke = () => {
-        let tokens = this.state.tokens;
-        tokens.defaultToke--;
+    // function for adding a token counter. No opacity uses this yet.
+    addToken = () => {
+        let data = this.state.data; 
+
+        data[this.state.selectedKey].counters.push({
+            name:"Token", type:"token", value: 1
+        })
 
         this.setState({
-            tokens: tokens,
-        })
+            data:data
+        }); 
     }
 
     // function for adding a token counter. No opacity uses this yet.
-    addToken = () => {
-        let tokens = this.state.tokens;
-        const tokensLength = tokens.length;
+    addCounter = () => {
+        let data = this.state.data; 
 
-        tokens.push({ defaultToke: 5, key: dataLength });
+        data[this.state.selectedKey].counters.push({
+            name:"Counter", type:"counter", value: 1
+        })
 
         this.setState({
-            tokens: tokens,
+            data:data
+        }); 
+    }
+
+    deleteCounter = (index) =>{
+        let data = this.state.data; 
+
+        data[this.state.selectedKey].counters[index]--;
+
+        this.setState({
+            data:data 
+        })
+    }
+
+    editCounterName = (name,index) =>{
+        let data = this.state.data; 
+
+        data[this.state.selectedKey].counters[index].name = name; 
+
+        this.setState({
+            data:data 
         })
     }
 
     render() {
+
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
 
-                <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} />
+                <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} minus={this.decrementLife} plus={this.incrementLife}/>
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
                     <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
@@ -204,30 +284,38 @@ export default class App extends Component {
                     modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
                     setColor={this.setColor} deletePlayer={this.deletePlayer} />
 
-                <PlayerNameModal 
-                    modalVisible={this.state.playerNameModalVisible} 
-                    setModalVisible = {this.setPlayerNameModalVisible}
-                    setPlayerName = {this.setPlayerName}
-                    data = {this.state.data} 
-                    selectedKey = {this.state.selectedKey}
+                
+
+                <PlayerNameModal
+                    modalVisible={this.state.playerNameModalVisible}
+                    setModalVisible={this.setPlayerNameModalVisible}
+                    setPlayerName={this.setPlayerName}
+                    data={this.state.data}
+                    selectedKey={this.state.selectedKey}
                     />
 
-                <CounterContainer />
+                <EditCounterModal 
+                    modalVisible = {this.state.editCounterModalVisible}
+                    setModalVisible = {this.setEditCounterModalVisible}
+                    data = {this.state.data} 
+                    selectedKey = {this.state.selectedKey}
+                    counterIndex = {this.state.counterIndex}
+                    deleteCounter = {this.deleteCounter}
+                    editCounterName = {this.editCounterName}
+                    />
 
-                <SettingsBar />
+                {<CounterContainer
+                    data={this.state.data}
+                    selectedKey={this.state.selectedKey}
+                    minusCounterValue={this.minusCounterValue}
+                    plusCounterValue={this.plusCounterValue}
+                    setEditCounterModalVisible={this.setEditCounterModalVisible}
+                    
+                    />}
+
+                <SettingsBar addToken = {this.addToken} addCounter ={this.addCounter} />
 
             </View>
         )
     }
 }
-
-/**
- * Old render return 
- * 
- *              <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
-                plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
-                />
-                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
-                <Edit modalVisible = {this.state.modalVisible} setModalVisible = {this.setModalVisible}/>
-                <PlayerHolder data={this.state.data} onAddPlayer={this.addPlayer} onSelectPlayer={this.selectPlayer} openEdit={this.setModalVisible}/>
- */

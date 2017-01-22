@@ -41,7 +41,7 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1  }}>
+                <TouchableOpacity onPress={()=>this.props.addToken()} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1  }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
 
@@ -62,7 +62,7 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={this.props.resetLife} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1 }}>
+                <TouchableOpacity onPress={()=>this.props.addCounter()} style={{ flex: 1.50,  flexDirection: 'row', borderColor:'black', borderLeftWidth:1, borderRightWidth:1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end'}}>
 

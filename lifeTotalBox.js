@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
  * TODO: onLongPress of playername, open modal to change name? 
  */
 export default class LifeTotalBox extends Component {
+    
     renderMinusContainer() {
         return (
             <View style={{ flex: 3, }} >
