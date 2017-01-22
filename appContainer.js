@@ -9,6 +9,8 @@ import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
 import BackgroundModal from './backgroundModal'
+import LifeTotalBox from './lifeTotalBox'
+import PlayerName from './playerName'
 
 /**
  * example of data --
@@ -133,7 +135,7 @@ export default class App extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
-                <PlayerView selectedKey={this.state.selectedKey} data={this.state.data} 
+                <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
                 plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
                 />
                 <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
@@ -144,7 +146,7 @@ export default class App extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
 
     container: {
         flex: 1,

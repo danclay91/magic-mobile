@@ -26,7 +26,7 @@ export default class Hold extends Component {
             return allPlayers;
         }
         return (
-            <View style={{ flex: 2, backgroundColor: 'white' }}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={styles.settingsContainer}>
                     <TouchableOpacity style={styles.addPlayer} onPress={this.props.onAddPlayer}>
                         <View style={{ alignItems: 'center', justifyContent: 'center'}}>
