@@ -39,7 +39,7 @@ export default class EditModal extends Component {
             </ScrollView>
           </View>
 
-          <Functions style={styles.buttonContainer} />
+          <Functions style={styles.buttonContainer} delete={this.props.delete} />
         </Modal>
       </View>
     );

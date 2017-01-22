@@ -11,6 +11,34 @@ import {
 
 export default class EditButton extends Component {
 
+  getBackgroundColor() {
+        selectedPlayer = this.props.data[this.props.id]
+
+        var backgroundColor;
+
+        switch (selectedPlayer.color) {
+            case "r":
+                backgroundColor = 'red';
+                break;
+            case "b":
+                backgroundColor = 'black';
+                break;
+            case "g":
+                backgroundColor = 'green';
+                break;
+            case 'w':
+                backgroundColor = 'white';
+                break;
+            case "u":
+                backgroundColor = 'blue';
+                break;
+            default:
+                backgroundColor = '#7fd3e0';
+                break;
+        }
+
+        return backgroundColor;
+    }
 
     render() {
 

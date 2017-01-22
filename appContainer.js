@@ -111,7 +111,11 @@ export default class App extends Component {
     deletePlayer = () =>{
         let data = this.state.data;
         const index = data.key;
-        data.splice({index: 1})
+        let TKey = this.state.selectedKey;
+        this.setState({
+            selectedKey: 0,
+        })
+        data.splice({index: TKey});
     }
     /**
      * Function to pass to PlayerButton to handle selecting/clicking players. 
@@ -178,7 +182,7 @@ export default class App extends Component {
                     <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
                 </View>
 
-                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} />
+                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} onSelectPlayer={this.selectPlayer} delete={this.deletePlayer}/>
 
                 <CounterContainer/>
                  

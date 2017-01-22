@@ -18,7 +18,7 @@ export default class EditFunctions extends Component {
                 <TouchableOpacity style={styles.even}>
                     <Text>Set BackGround Color</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.even}>
+                <TouchableOpacity style={styles.even} onPress={this.props.delete}>
                     <Text>Delete Player</Text>
                 </TouchableOpacity>
             </View>
