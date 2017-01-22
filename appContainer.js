@@ -158,9 +158,7 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
-                <View style = {{flex:4.50, backgroundColor:'red'}}>
-                    <Text>lifeTotalBox</Text>
-                </View>
+                <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
 
                 <View style = {{flex:1, backgroundColor: 'blue'}} >
                     <Text>addPlayer</Text> 
