@@ -36,7 +36,7 @@ export default class TokenCounters extends Component {
                 marginRight:1
             }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#618eb5', borderRadius:80, marginTop:1, marginBottom:1, marginLeft:1 }}>
-                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}>{this.props.tokens.defaultToke} </Text>
+                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}></Text>
 
                 </View>
 
