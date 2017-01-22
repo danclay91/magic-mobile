@@ -5,7 +5,7 @@ import {
     StyleSheet,
     Text
 } from 'react-native'
-
+import AddPlayer from './addPlayer.js'
 import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
@@ -103,7 +103,11 @@ export default class App extends Component {
             data: data,
         })
     }
-
+    deletePlayer = () =>{
+        let data = this.state.data;
+        const index = data.key;
+        data.splice({index: 1})
+    }
     /**
      * Function to pass to PlayerButton to handle selecting/clicking players. 
      */
@@ -158,25 +162,29 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
-                <View style = {{flex:4.50, backgroundColor:'red'}}>
+                <View style={{ flex: 4.50, backgroundColor: 'red' }}>
                     <Text>lifeTotalBox</Text>
                 </View>
 
-                <View style = {{flex:1, backgroundColor: 'blue'}} >
-                    <Text>addPlayer</Text> 
+                <View style={{ flex: 1, backgroundColor: 'blue' }} >
+                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
                 </View>
 
-                <View style = {{flex:1.50, backgroundColor: 'green'}}>
-                    <Text>Player buttons </Text>
+                <View style={{ flex: 1.50, backgroundColor: 'green' }}>
+                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
                 </View>
 
-                <View style = {{flex: 5, backgroundColor: 'pink'}}>
+                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
+                    modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
+                    setColor={this.setColor} deletePlayer={this.deletePlayer}/>
+
+                <View style={{ flex: 5, backgroundColor: 'pink' }}>
                     <Text>Counter Container</Text>
                 </View>
 
-                <View style = {{flex:1, backgroundColor:"blue"}}>
+                <View style={{ flex: 1, backgroundColor: "blue" }}>
                     <Text>Settings Bar</Text>
-                </View> 
+                </View>
             </View>
         )
     }
@@ -185,7 +193,7 @@ export default class App extends Component {
 /**
  * Old render return 
  * 
- *   <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
+ *              <LifeTotalBox selectedKey={this.state.selectedKey} data={this.state.data} 
                 plus={this.incrementLife} minus={this.decrementLife} resetLife={this.resetLife} openBackground={this.setBackGroundModalVisible}
                 />
                 <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey} modalVisible = {this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible} setColor={this.setColor}/>
