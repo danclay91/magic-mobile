@@ -9,8 +9,6 @@ import {
 
 } from 'react-native'
 
-import PlayerView from './playerView'
-
 
 export default class PlayerName extends Component {
 

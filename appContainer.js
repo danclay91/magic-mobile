@@ -7,10 +7,10 @@ import {
     ScrollView
 } from 'react-native'
 import AddPlayer from './addPlayer.js'
-import PlayerView from './playerView'
+
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
-import BackgroundModal from './backgroundModal'
+
 import LifeTotalBox from './lifeTotalBox'
 import PlayerName from './playerName'
 import SettingsBar from './settingsBar'
@@ -43,7 +43,7 @@ export default class App extends Component {
             { name: 'Daryll', lifeTotal: 30, color: null, key: 1 }],
             tokens: [{ defaultToke: 5, key: 0 }, { defaultToke: 5, key: 1 }],
             selectedKey: 1,
-            modalVisible: false,
+            editModalVisible: false,
             backgroundModalVisible: false,
             settings: {
                 defaultLife: 20,
@@ -134,8 +134,8 @@ export default class App extends Component {
 
     }
 
-    setModalVisible = (visible) => {
-        this.setState({ modalVisible: visible });
+    setEditModalVisible = (visible) => {
+        this.setState({ editModalVisible: visible });
     }
 
     setBackGroundModalVisible = (visible) => {
@@ -171,16 +171,14 @@ export default class App extends Component {
                 <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
-                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
+                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} setVis={this.setEditModalVisible}/>
                 </View>
 
                 <View style={{ flex: 1.50, backgroundColor: 'green' }}>
                     <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
                 </View>
 
-                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
-                    modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
-                    setColor={this.setColor} deletePlayer={this.deletePlayer}/>
+                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} />
 
                 <CounterContainer/>
                  

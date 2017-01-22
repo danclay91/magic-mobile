@@ -8,7 +8,7 @@ import {
 
 } from 'react-native'
 
-import PlayerView from './playerView'
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**

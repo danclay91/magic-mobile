@@ -20,7 +20,7 @@ export default class AddPlayer extends Component {
                     </View>
                     <Text style={{ color: 'black', textAlign: 'center', fontFamily: 'Teko-Light' }}>Add Player</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.editPlayer} onPress={() => this.props.openEdit()}>
+                <TouchableOpacity style={styles.editPlayer} onPress={()=>this.props.setVis(true)}>
 
                     <View style={{ alignItems: 'center', justifyContent: 'center', }}>
                         <FounIcon name="results-demographics" size={25} />
