@@ -7,16 +7,15 @@ import {
     ScrollView
 } from 'react-native'
 import AddPlayer from './addPlayer.js'
-import PlayerView from './playerView'
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
 import BackgroundModal from './backgroundModal'
 import LifeTotalBox from './lifeTotalBox'
-import PlayerName from './playerName'
 import SettingsBar from './settingsBar'
 import CounterContainer from './counterContainer'
 import TokenCounters from './tokenCounters'
 import BasicCounters from './basicCounters'
+import PlayerNameModal from './playerNameModal'
 
 /**
  * example of data --
@@ -45,6 +44,7 @@ export default class App extends Component {
             selectedKey: 1,
             modalVisible: false,
             backgroundModalVisible: false,
+            playerNameModalVisible: false, 
             settings: {
                 defaultLife: 20,
             }
@@ -52,7 +52,7 @@ export default class App extends Component {
     }
 
     /**
-     * 
+     * Resets all player life to 0. 
      */
     resetLife = () => {
         data = this.state.data;
@@ -108,11 +108,26 @@ export default class App extends Component {
             data: data,
         })
     }
-    deletePlayer = () =>{
+
+    deletePlayer = () => {
         let data = this.state.data;
         const index = data.key;
-        data.splice({index: 1})
+        data.splice({ index: 1 })
     }
+
+    /**
+     * Used to change player name. 
+     */
+    setPlayerName = (name) =>{
+        let data = this.state.data; 
+        
+        data[this.state.selectedKey].name = name; 
+
+        this.setState({
+            data: data, 
+        })
+    }
+
     /**
      * Function to pass to PlayerButton to handle selecting/clicking players. 
      */
@@ -138,6 +153,12 @@ export default class App extends Component {
         this.setState({ modalVisible: visible });
     }
 
+    setPlayerNameModalVisible = (visible) => {
+        this.setState({
+            playerNameModalVisible: visible
+        });
+    }
+
     setBackGroundModalVisible = (visible) => {
         this.setState({ backgroundModalVisible: visible });
     }
@@ -151,6 +172,7 @@ export default class App extends Component {
             tokens: tokens,
         })
     }
+
     // function for adding a token counter. No opacity uses this yet.
     addToken = () => {
         let tokens = this.state.tokens;
@@ -168,7 +190,7 @@ export default class App extends Component {
             <View style={{ flex: 1, backgroundColor: 'red' }}>
 
 
-                <LifeTotalBox data={this.state.data} selectedKey={this.state.selectedKey}/>
+                <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} />
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
                     <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
@@ -180,10 +202,18 @@ export default class App extends Component {
 
                 <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
                     modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
-                    setColor={this.setColor} deletePlayer={this.deletePlayer}/>
+                    setColor={this.setColor} deletePlayer={this.deletePlayer} />
 
-                <CounterContainer/>
-                 
+                <PlayerNameModal 
+                    modalVisible={this.state.playerNameModalVisible} 
+                    setModalVisible = {this.setPlayerNameModalVisible}
+                    setPlayerName = {this.setPlayerName}
+                    data = {this.state.data} 
+                    selectedKey = {this.state.selectedKey}
+                    />
+
+                <CounterContainer />
+
                 <SettingsBar />
 
             </View>

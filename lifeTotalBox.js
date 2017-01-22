@@ -8,7 +8,6 @@ import {
 
 } from 'react-native'
 
-import PlayerView from './playerView'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
@@ -71,7 +70,10 @@ export default class LifeTotalBox extends Component {
     renderPlayerName(selectedPlayer) {
         return (
             <View style={styles.nameBox}>
-                <Text style={styles.nameText}>{selectedPlayer.name}</Text>
+                <TouchableOpacity
+                    onLongPress={()=>this.props.setModalVisible(true)}>
+                    <Text style={styles.nameText}>{selectedPlayer.name}</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -116,14 +118,14 @@ var styles = StyleSheet.create({
 
     rightArrow: {
         flex: 1,
-     
+
         alignItems: 'center',
     },
 
     lifeBox: {
         flex: 4.50,
         backgroundColor: '#3c7387',
-        paddingTop:15,
+        paddingTop: 15,
 
     },
 
@@ -144,6 +146,5 @@ var styles = StyleSheet.create({
         fontSize: 40,
         fontFamily: 'Teko-Medium',
         color: 'white',
-        marginTop:10,
     }
 });
