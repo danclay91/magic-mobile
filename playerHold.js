@@ -40,8 +40,8 @@ export default class Hold extends Component {
 
 const styles = StyleSheet.create({
     playerContainer: {
-        flex: 2,
-        backgroundColor: '#505256',
+        flex: 1.75,
+        backgroundColor: 'black',
         flexDirection: 'row',
     },
 });

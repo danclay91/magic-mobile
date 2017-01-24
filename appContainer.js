@@ -15,8 +15,13 @@ import SettingsBar from './settingsBar'
 import CounterContainer from './counterContainer'
 import TokenCounters from './tokenCounters'
 import BasicCounters from './basicCounters'
+
 import PlayerNameModal from './playerNameModal'
 import EditCounterModal from './editCounterModal'
+
+
+import CoinRoller from './coinRoller'
+import ModalMR from './modalMR'
 
 
 /**
@@ -54,8 +59,8 @@ export default class App extends Component {
                         { name: "Poison Counter", type: "counter", value: 3 },
                     ]
                 }],
-            showCounters: true, 
-            counterIndex:0,
+            showCounters: true,
+            counterIndex: 0,
             selectedKey: 1,
             modalVisible: false,
             backgroundModalVisible: false,
@@ -195,13 +200,13 @@ export default class App extends Component {
         this.setState({ modalVisible: visible });
     }
 
-    setEditCounterModalVisible = (visible,index) => {
+    setEditCounterModalVisible = (visible, index) => {
         this.setState({
-            editCounterModalVisible: visible, 
+            editCounterModalVisible: visible,
         })
 
-        if(visible && index!=null){
-           
+        if (visible && index != null) {
+
             this.setState({
                 counterIndex: index
             })
@@ -220,71 +225,79 @@ export default class App extends Component {
 
     // function for adding a token counter. No opacity uses this yet.
     addToken = () => {
-        let data = this.state.data; 
+        let data = this.state.data;
 
         data[this.state.selectedKey].counters.push({
-            name:"Token", type:"token", value: 1
+            name: "Token", type: "token", value: 1
         })
 
         this.setState({
-            data:data
-        }); 
+            data: data
+        });
     }
 
     // function for adding a token counter. No opacity uses this yet.
     addCounter = () => {
-        let data = this.state.data; 
+        let data = this.state.data;
 
         data[this.state.selectedKey].counters.push({
-            name:"Counter", type:"counter", value: 1
+            name: "Counter", type: "counter", value: 1
         })
 
         this.setState({
-            data:data
-        }); 
+            data: data
+        });
     }
 
-    deleteCounter = (index) =>{
-        let data = this.state.data; 
+    deleteCounter = (index) => {
+        let data = this.state.data;
 
         data[this.state.selectedKey].counters[index]--;
 
         this.setState({
-            data:data 
+            data: data
         })
     }
 
-    editCounterName = (name,index) =>{
-        let data = this.state.data; 
+    editCounterName = (name, index) => {
+        let data = this.state.data;
 
-        data[this.state.selectedKey].counters[index].name = name; 
+        data[this.state.selectedKey].counters[index].name = name;
 
         this.setState({
-            data:data 
+            data: data
         })
     }
 
     render() {
 
         return (
-            <View style={{ flex: 1, backgroundColor: 'red' }}>
+            <View style={{ flex: 1, backgroundColor: 'black' }}>
 
 
-                <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} minus={this.decrementLife} plus={this.incrementLife}/>
 
-                <View style={{ flex: 1, backgroundColor: 'blue' }} >
+                <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} minus={this.decrementLife} plus={this.incrementLife} />
+
+
+                <View style={{ flex: 1, backgroundColor: 'black' }} >
                     <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
                 </View>
 
-                <View style={{ flex: 1.50, backgroundColor: 'green' }}>
+
+
+                <View style={{ flex: 1.50, backgroundColor: 'black' }}>
                     <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
                 </View>
 
+
+
+
                 <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
                     modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
+
                     setColor={this.setColor} deletePlayer={this.deletePlayer} />
 
-                
+
 
                 <PlayerNameModal
                     modalVisible={this.state.playerNameModalVisible}
@@ -294,14 +307,14 @@ export default class App extends Component {
                     selectedKey={this.state.selectedKey}
                     />
 
-                <EditCounterModal 
-                    modalVisible = {this.state.editCounterModalVisible}
-                    setModalVisible = {this.setEditCounterModalVisible}
-                    data = {this.state.data} 
-                    selectedKey = {this.state.selectedKey}
-                    counterIndex = {this.state.counterIndex}
-                    deleteCounter = {this.deleteCounter}
-                    editCounterName = {this.editCounterName}
+                <EditCounterModal
+                    modalVisible={this.state.editCounterModalVisible}
+                    setModalVisible={this.setEditCounterModalVisible}
+                    data={this.state.data}
+                    selectedKey={this.state.selectedKey}
+                    counterIndex={this.state.counterIndex}
+                    deleteCounter={this.deleteCounter}
+                    editCounterName={this.editCounterName}
                     />
 
                 {<CounterContainer
@@ -310,12 +323,22 @@ export default class App extends Component {
                     minusCounterValue={this.minusCounterValue}
                     plusCounterValue={this.plusCounterValue}
                     setEditCounterModalVisible={this.setEditCounterModalVisible}
-                    
+
                     />}
 
-                <SettingsBar addToken = {this.addToken} addCounter ={this.addCounter} />
+                <SettingsBar addToken={this.addToken} addCounter={this.addCounter} />
+
+
+
+
 
             </View>
         )
     }
 }
+
+
+
+
+/*   
+*/

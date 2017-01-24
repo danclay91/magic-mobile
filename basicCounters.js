@@ -30,16 +30,16 @@ export default class BasicCounters extends Component {
                 onLongPress={() => this.props.setEditCounterModalVisible(true,index)}
                 style={{
                     height: 56,
-                    backgroundColor: '#a3a7af',
-                    borderColor: '#babdc1',
-                    borderWidth: 4,
-                    borderRadius: 15,
+                    backgroundColor: '#babdc1',
+                    borderColor: '#e8ecf2',
+                    borderWidth: 2,
+                    borderRadius: 25,
                     flex: 5,
                     flexDirection: 'row',
                     marginBottom: 1,
                     marginTop: .50,
                     marginLeft: 1,
-                    marginRight: 1
+                    marginRight: 1 
                 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#b9bc54', borderRadius: 80, marginTop: 1, marginBottom: 1, marginLeft: 1 }}>
                     <Text style={{ fontSize: 20, color: 'white', fontFamily: 'Teko-SemiBold' }}>{this.props.value}</Text>
@@ -47,7 +47,7 @@ export default class BasicCounters extends Component {
                 </View>
 
                 <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Teko-Medium' }}>{this.props.name}</Text>
+                    <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Teko-Medium' }}>{this.props.name}</Text>
 
 
                 </View>

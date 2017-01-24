@@ -47,15 +47,15 @@ export default class EditCounterModal extends Component {
                     visible={this.props.modalVisible}
                     onRequestClose={() => this.props.setModalVisible(false)}
                     >
-                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, }}>
+                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10,}}>
                         <View style={{ flex: 1 }} />
 
-                        <View style={{ flex: 1, backgroundColor: 'white', borderWidth: 1, paddingTop: 20 }}>
+                        <View style={{ flex: 1, backgroundColor: '#a3a7af', borderWidth: 1, paddingTop: 20, borderRadius:24, borderColor:'white'}}>
 
-                            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} >
-                                <Text>Name:</Text>
+                            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent:'center' }} >
+                                <Text style={{color:'white'}}>Name:</Text>
                                 <TextInput
-                                    style={{ width: 200, textAlign: 'center' }}
+                                    style={{ width: 200, textAlign: 'center', color:'white' }}
                                     defaultValue={this.getCounterName(player)}
                                     onChange={(text, index) => {
                                         this.props.editCounterName(text,index); 
@@ -63,10 +63,10 @@ export default class EditCounterModal extends Component {
                                     />
                             </View>
 
-                            <View style={{ flex: 1, alignItems: 'center', flexDirection: 'row' }}>
-                                <Text>Value: </Text>
+                            <View style={{ flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent:'center' }}>
+                                <Text style={{color:'white'}}>Value: </Text>
                                 <TextInput
-                                    style={{ textAlign: 'center' }}
+                                    style={{ width:200, textAlign: 'center', color:'white' }}
                                     defaultValue={this.getCounterValue(player)}
                                     />
                             </View>
@@ -83,17 +83,17 @@ export default class EditCounterModal extends Component {
 
                                         this.props.deleteCounter(this.props.counterIndex);
                                     } }
-                                    style={{ backgroundColor: 'red', flex: 1, alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}
+                                    style={{ backgroundColor: '#fca9a9', flex: 1, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderRadius:8 }}
                                     >
-                                    <Text>Delete</Text>
+                                    <Text style={{color:'white',fontFamily:'Teko-Medium'}}>Delete</Text>
                                 </TouchableOpacity>
                                 <View style={{ flex: .10 }} />
                                 <TouchableOpacity
-                                    style={{ flex: 1, backgroundColor: 'gray', borderWidth: 1, alignItems: 'center', justifyContent: 'center' }}
+                                    style={{ flex: 1, backgroundColor: '#bcdbbe', borderWidth: 1, alignItems: 'center', justifyContent: 'center', borderRadius:8 }}
                                     onPress={() => this.props.setModalVisible(false)}
                                     >
 
-                                    <Text>Done</Text>
+                                     <Text style={{fontFamily:'Teko-Medium', color:'white'}}>Done</Text>
 
                                 </TouchableOpacity>
 

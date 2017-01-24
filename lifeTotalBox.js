@@ -127,6 +127,9 @@ var styles = StyleSheet.create({
         flex: 4.50,
         backgroundColor: '#3c7387',
         paddingTop: 15,
+        borderColor:'black',
+        borderWidth:10,
+        borderRadius:20
 
     },
 

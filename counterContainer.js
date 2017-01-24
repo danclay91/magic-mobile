@@ -22,15 +22,15 @@ export default class CounterContainer extends Component {
             let counters = selectedPlayer.counters.map((counter, index) => {
                 if (counter.type == "counter") {
                     return (
-                        <Counter name={counter.name} value={counter.value} key={index} index={index} minusCounterValue = {this.props.minusCounterValue} plusCounterValue = {this.props.plusCounterValue} 
-                        setEditCounterModalVisible={this.props.setEditCounterModalVisible}/>
+                        <Counter name={counter.name} value={counter.value} key={index} index={index} minusCounterValue={this.props.minusCounterValue} plusCounterValue={this.props.plusCounterValue}
+                            setEditCounterModalVisible={this.props.setEditCounterModalVisible} />
                     )
                 }
 
                 else if (counter.type == "token") {
                     return (
-                        <Token name={counter.name} value={counter.value} key={index} index={index} minusCounterValue = {this.props.minusCounterValue} plusCounterValue = {this.props.plusCounterValue} 
-                        setEditCounterModalVisible={this.props.setEditCounterModalVisible}/>
+                        <Token name={counter.name} value={counter.value} key={index} index={index} minusCounterValue={this.props.minusCounterValue} plusCounterValue={this.props.plusCounterValue}
+                            setEditCounterModalVisible={this.props.setEditCounterModalVisible} />
                     )
                 }
             })
@@ -39,10 +39,13 @@ export default class CounterContainer extends Component {
 
         return (
             <View style={{
-                flex: 5,
-                backgroundColor: '#505256',
-                borderColor: 'black',
-                borderWidth: 1,
+                flex: 5.25,
+             
+                backgroundColor: 'black',
+                borderColor: 'white',
+                borderTopWidth: 2,
+                paddingTop: 1,
+                paddingBottom: 1
             }}>
 
                 <ScrollView>
