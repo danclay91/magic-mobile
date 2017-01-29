@@ -45,7 +45,8 @@ export default class CounterContainer extends Component {
                 borderColor: 'white',
                 borderTopWidth: 2,
                 paddingTop: 1,
-                paddingBottom: 1
+                paddingBottom: 1,
+                borderBottomWidth:2
             }}>
 
                 <ScrollView>
