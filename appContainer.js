@@ -22,6 +22,8 @@ import EditCounterModal from './editCounterModal'
 
 import CoinRoller from './coinRoller'
 import ModalMR from './modalMR'
+import SettingsContainer from './settingsContainer'
+
 
 
 /**
@@ -66,7 +68,8 @@ export default class App extends Component {
             backgroundModalVisible: false,
             playerNameModalVisible: false,
             editCounterModalVisible: false,
-            coinRollerVisible: false, 
+            coinRollerVisible: false,
+            settingsContainerVisible: false,
             settings: {
                 defaultLife: 20,
             }
@@ -76,9 +79,16 @@ export default class App extends Component {
     /**
      * Used to open coin roller. 
      */
-    setCoinRollerVisible = () =>{
+    setCoinRollerVisible = () => {
         this.setState({
-            coinRollerVisible: !coinRollerVisible
+            coinRollerVisible: !this.state.coinRollerVisible
+        })
+    }
+    /** Used to open Settings button.
+     * */
+    setSettingsVisible = () => {
+        this.setState({
+            settingsContainerVisible: !this.state.settingsContainerVisible
         })
     }
 
@@ -281,21 +291,44 @@ export default class App extends Component {
 
     render() {
 
-        let bottomComponent = ()=>{
-            if(this.state.coinRollerVisible == true){
-                
+        let bottomComponent = () => {
+            if (this.state.coinRollerVisible == true) {
+                return (
+                    <CoinRoller />
+                )
+
             } else {
                 return (
-                <CounterContainer
-                    data={this.state.data}
-                    selectedKey={this.state.selectedKey}
-                    minusCounterValue={this.minusCounterValue}
-                    plusCounterValue={this.plusCounterValue}
-                    setEditCounterModalVisible={this.setEditCounterModalVisible}
+                    <CounterContainer
+                        data={this.state.data}
+                        selectedKey={this.state.selectedKey}
+                        minusCounterValue={this.minusCounterValue}
+                        plusCounterValue={this.plusCounterValue}
+                        setEditCounterModalVisible={this.setEditCounterModalVisible}
 
-                />); 
+                        />);
             }
         }
+
+        let settingsContainer = () => {
+            if (this.state.settingsContainerVisible == true) {
+                return (
+                    <SettingsContainer
+                        settingsContainerVisible={this.setSettingsVisible}
+                        />
+                )
+            }
+            else {
+                return (
+                    <SettingsBar
+                        addToken={this.addToken}
+                        addCounter={this.addCounter}
+                        coinRollerVisible={this.setCoinRollerVisible}
+                        settingsContainerVisible={this.setSettingsVisible} />
+                )
+            }
+        }
+
 
         return (
             <View style={{ flex: 1, backgroundColor: 'black' }}>
@@ -346,8 +379,7 @@ export default class App extends Component {
                 {bottomComponent()}
 
 
-                <SettingsBar addToken={this.addToken} addCounter={this.addCounter} />
-
+                {settingsContainer()}
 
 
 
