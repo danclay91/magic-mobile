@@ -66,10 +66,20 @@ export default class App extends Component {
             backgroundModalVisible: false,
             playerNameModalVisible: false,
             editCounterModalVisible: false,
+            coinRollerVisible: false, 
             settings: {
                 defaultLife: 20,
             }
         }
+    }
+
+    /**
+     * Used to open coin roller. 
+     */
+    setCoinRollerVisible = () =>{
+        this.setState({
+            coinRollerVisible: !coinRollerVisible
+        })
     }
 
     /**
@@ -271,6 +281,22 @@ export default class App extends Component {
 
     render() {
 
+        let bottomComponent = ()=>{
+            if(this.state.coinRollerVisible == true){
+                
+            } else {
+                return (
+                <CounterContainer
+                    data={this.state.data}
+                    selectedKey={this.state.selectedKey}
+                    minusCounterValue={this.minusCounterValue}
+                    plusCounterValue={this.plusCounterValue}
+                    setEditCounterModalVisible={this.setEditCounterModalVisible}
+
+                />); 
+            }
+        }
+
         return (
             <View style={{ flex: 1, backgroundColor: 'black' }}>
 
@@ -317,14 +343,8 @@ export default class App extends Component {
                     editCounterName={this.editCounterName}
                     />
 
-                {<CounterContainer
-                    data={this.state.data}
-                    selectedKey={this.state.selectedKey}
-                    minusCounterValue={this.minusCounterValue}
-                    plusCounterValue={this.plusCounterValue}
-                    setEditCounterModalVisible={this.setEditCounterModalVisible}
+                {bottomComponent()}
 
-                    />}
 
                 <SettingsBar addToken={this.addToken} addCounter={this.addCounter} />
 
