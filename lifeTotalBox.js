@@ -147,7 +147,7 @@ var styles = StyleSheet.create({
 
     nameText: {
         textAlign: 'center',
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'Teko-Medium',
         color: 'white',
     }
