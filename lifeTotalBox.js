@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
  * TODO: onLongPress of playername, open modal to change name? 
  */
 export default class LifeTotalBox extends Component {
-    
+
     renderMinusContainer() {
         return (
             <View style={{ flex: 3, }} >
@@ -69,10 +69,19 @@ export default class LifeTotalBox extends Component {
     }
 
     renderPlayerName(selectedPlayer) {
+
+        let playerName;
+
+        if (selectedPlayer.name == null || selectedPlayer.name == undefined) {
+            playerName = '';
+        } else {
+            playerName = selectedPlayer.name;
+        }
+
         return (
             <View style={styles.nameBox}>
                 <TouchableOpacity
-                    onLongPress={()=>this.props.setModalVisible(true)}>
+                    onLongPress={() => this.props.setModalVisible(true)}>
                     <Text style={styles.nameText}>{selectedPlayer.name}</Text>
                 </TouchableOpacity>
             </View>
@@ -127,9 +136,9 @@ var styles = StyleSheet.create({
         flex: 4.50,
         backgroundColor: '#3c7387',
         paddingTop: 15,
-        borderColor:'black',
-        borderWidth:10,
-        borderRadius:20
+        borderColor: 'black',
+        borderWidth: 10,
+        borderRadius: 20
 
     },
 

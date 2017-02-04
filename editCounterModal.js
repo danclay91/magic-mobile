@@ -14,6 +14,11 @@ export default class EditCounterModal extends Component {
 
 
     getCounterValue(player) {
+
+        if(player.counters == null || player.counters == undefined){
+            return ''; 
+        }
+
         if (player.counters.length > 0) {
 
             let counter = player.counters[this.props.counterIndex];
@@ -26,6 +31,10 @@ export default class EditCounterModal extends Component {
     }
 
     getCounterName(player) {
+        if(player.counter == null || player.counter == undefined){
+            return '';
+        }
+
         if (player.counters.length > 0) {
 
             let counter = player.counters[this.props.counterIndex];

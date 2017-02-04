@@ -22,7 +22,7 @@ import EditCounterModal from './editCounterModal'
 
 import CoinRoller from './coinRoller'
 import ModalMR from './modalMR'
-
+import Player from './player'; 
 
 /**
  * example of data --
@@ -44,9 +44,13 @@ export default class App extends Component {
     constructor(props) {
         super(props)
 
+        var defaultPlayer1 = Player("Fred", 20 , null, 0); 
+        var defaultPlayer2 = Player("Daryll", 20, null, 1); 
+
         this.state = {
             data: [
-                {
+                defaultPlayer1, defaultPlayer2
+                /*{
                     name: 'Fred', lifeTotal: 20, color: null, key: 0, counters: [
                         { name: "Angel 3/3", type: "token", value: 3 },
                         { name: "EXP Counter", type: "counter", value: 10 },
@@ -58,7 +62,7 @@ export default class App extends Component {
                         { name: "Demon 4/2", type: "token", value: 6 },
                         { name: "Poison Counter", type: "counter", value: 3 },
                     ]
-                }],
+                }*/],
             showCounters: true,
             counterIndex: 0,
             selectedKey: 1,
@@ -159,13 +163,19 @@ export default class App extends Component {
         let data = this.state.data;
         const dataLength = data.length;
 
-        data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength });
+        var newPlayer = Player("player",20, null, dataLength); 
+        //data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
 
+        data.push(newPlayer); 
+        
         this.setState({
             data: data,
         })
     }
 
+    /**
+     *  
+     */
     deletePlayer = () => {
         let data = this.state.data;
         const index = data.key;
