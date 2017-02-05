@@ -8,7 +8,10 @@ import {
 
 } from 'react-native'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c029e58ce01ec32f63ccf467eef24951b3fc0e4
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
@@ -18,6 +21,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
  * TODO: onLongPress of playername, open modal to change name? 
  */
 export default class LifeTotalBox extends Component {
+
     renderMinusContainer() {
         return (
             <View style={{ flex: 3, }} >
@@ -59,6 +63,9 @@ export default class LifeTotalBox extends Component {
     }
 
     renderLifeScore(selectedPlayer) {
+        if (selectedPlayer == undefined) {
+            return null;
+        }
         return (
             <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
 
@@ -69,9 +76,16 @@ export default class LifeTotalBox extends Component {
     }
 
     renderPlayerName(selectedPlayer) {
+
+        if (selectedPlayer == undefined) {
+            return null;
+        }
         return (
             <View style={styles.nameBox}>
-                <Text style={styles.nameText}>{selectedPlayer.name}</Text>
+                <TouchableOpacity
+                    onLongPress={() => this.props.setModalVisible(true)}>
+                    <Text style={styles.nameText}>{selectedPlayer.name}</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -116,14 +130,17 @@ var styles = StyleSheet.create({
 
     rightArrow: {
         flex: 1,
-     
+
         alignItems: 'center',
     },
 
     lifeBox: {
         flex: 4.50,
         backgroundColor: '#3c7387',
-        paddingTop:15,
+        paddingTop: 15,
+        borderColor: 'black',
+        borderWidth: 10,
+        borderRadius: 20
 
     },
 
@@ -141,9 +158,8 @@ var styles = StyleSheet.create({
 
     nameText: {
         textAlign: 'center',
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'Teko-Medium',
         color: 'white',
-        marginTop:10,
     }
 });

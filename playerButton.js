@@ -4,7 +4,7 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
-    Text
+    Text,
 } from 'react-native'
 
 
@@ -40,14 +40,43 @@ export default class Button extends Component {
         return backgroundColor;
     }
 
+    lifeRed() {
+        lifeTotal = this.props.player.lifeTotal
+
+        var color;
+
+
+        if (lifeTotal > 5 && lifeTotal <= 10) {
+            color = "#eda90b"
+        }
+        else if (lifeTotal <= 5) {
+            color = 'red';
+        }
+        else {
+            color = 'white';
+        }
+
+        return color;
+    }
+
+
+
+
+
+
+
+
 
     render() {
         let bgColor = this.getBackgroundColor();
+        let fontColor = this.lifeRed();
+        let index = this.props.index;
+
 
         return (
-            <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} >
+            <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} onLongPress={() => this.props.editPlayerModal(true, index)} >
                 <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
-                <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color:'black' }}>{this.props.player.lifeTotal}</Text>
+                <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color: fontColor }}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
         )
     }
@@ -55,26 +84,30 @@ export default class Button extends Component {
 
 var styles = StyleSheet.create({
     playerTab: {
-        width: 90,
+        width: 88,
         borderRightWidth: 1,
         borderBottomWidth: 1,
         borderLeftWidth: 1,
-        borderTopWidth:1,
-        backgroundColor:'#babdc1',
+        borderTopWidth: 1,
+        borderRadius: 6,
+        backgroundColor: '#505256',
         flex: 1,
-        alignItems:'center',
-        justifyContent: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'white',
+        margin: 1,
+        marginBottom: 2
 
-        
-        
+
+
     },
     playerTabNames: {
         textAlign: 'center',
         textDecorationLine: 'underline',
         fontFamily: 'Teko-Light',
         fontSize: 25,
-        flex:2,
-        color: 'black'
+        flex: 2,
+        color: 'white'
     },
 
 

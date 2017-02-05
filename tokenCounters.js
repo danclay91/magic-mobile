@@ -21,34 +21,39 @@ export default class TokenCounters extends Component {
 
     render() {
 
+        let index = this.props.index;
+
         return (
-            <View style={{
-                height: 56,
-                backgroundColor: '#e8ecf2',
-                borderColor: '#babdc1',
-                borderWidth: 4,
-                borderRadius: 15,
-                flex: 5,
-                flexDirection: 'row',
-                marginBottom:1,
-                marginTop:.50,
-                marginLeft:1,
-                marginRight:1
-            }}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#618eb5', borderRadius:80, marginTop:1, marginBottom:1, marginLeft:1 }}>
-                <Text style={{fontSize:20, color:'white', fontFamily:'Teko-SemiBold'}}></Text>
+            <TouchableOpacity
+                onLongPress = {()=>this.props.setEditCounterModalVisible(true,index)}
+                style={{
+                    height: 56,
+                    backgroundColor: '#babdc1',
+                    borderColor: '#e8ecf2',
+                    borderWidth: 2,
+                    borderRadius: 25,
+                    flex: 5,
+                    flexDirection: 'row',
+                    marginBottom: 1,
+                    marginTop: .50,
+                    marginLeft: 1,
+                    marginRight: 1 
+                }}>
+
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#618eb5', borderRadius: 80, marginTop: 1, marginBottom: 1, marginLeft: 1 }}>
+                    <Text style={{ fontSize: 20, color: 'white', fontFamily: 'Teko-SemiBold' }}>{this.props.value}</Text>
 
                 </View>
 
-                <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center'  }}>
-                    <Text style={{ color: 'black', fontSize:20, fontFamily:'Teko-Medium' }}>Angel 3/3</Text>
+                <View style={{ flex: 3, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Teko-Medium' }}>{this.props.name}</Text>
 
 
                 </View>
 
                 <View style={{ flex: .50, }}>
 
-                    <TouchableOpacity onPress={this.props.minus} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => this.props.minusCounterValue(index)} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
                         <View>
                             <FounIcon name="minus" size={25} color="#fca9a9" />
                         </View>
@@ -57,14 +62,14 @@ export default class TokenCounters extends Component {
                 </View>
 
                 <View style={{ flex: 1, }}>
-                    <TouchableOpacity onPress={this.props.plus} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => this.props.plusCounterValue(index)} style={{ flex: 4, alignItems: 'center', justifyContent: 'center' }}>
                         <View>
                             <FounIcon name="plus" size={25} color="#bcdbbe" />
                         </View>
                     </TouchableOpacity>
 
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
