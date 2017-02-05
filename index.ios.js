@@ -14,7 +14,7 @@ import App from './appContainer';
 export default class magicMobile extends Component {
   render() {
     return (
-      <App/>
+      <App os="ios"/>
     );
   }
 }

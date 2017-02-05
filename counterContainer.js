@@ -17,8 +17,13 @@ export default class CounterContainer extends Component {
     render() {
 
         let selectedPlayer = this.props.data[this.props.selectedKey];
-                
+        
         let renderCounters = () => {
+            
+            if(selectedPlayer == undefined || selectedPlayer == null){
+                return; 
+            }
+
             let counters = selectedPlayer.counters.map((counter, index) => {
                 if (counter.type == "counter") {
                     return (

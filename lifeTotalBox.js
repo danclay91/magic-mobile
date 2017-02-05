@@ -5,7 +5,6 @@ import {
     View,
     TouchableOpacity,
     StyleSheet
-
 } from 'react-native'
 
 
@@ -76,18 +75,18 @@ export default class LifeTotalBox extends Component {
 
         let playerName;
 
-        if (selectedPlayer.name == null || selectedPlayer.name == undefined) {
+        if (selectedPlayer == null || selectedPlayer == undefined || selectedPlayer.name == null || selectedPlayer.name == undefined) {
             playerName = '';
         } else {
             playerName = selectedPlayer.name;
         }
-
+        
 
         return (
             <View style={styles.nameBox}>
                 <TouchableOpacity
                     onLongPress={() => this.props.setModalVisible(true)}>
-                    <Text style={styles.nameText}>{selectedPlayer.name}</Text>
+                    <Text style={styles.nameText}>{playerName}</Text>
                 </TouchableOpacity>
             </View>
         )

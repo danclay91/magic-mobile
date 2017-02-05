@@ -24,7 +24,7 @@ import EditCounterModal from './editCounterModal'
 import CoinRoller from './coinRoller'
 import ModalMR from './modalMR'
 
-import Player from './player'; 
+import Player from './player';
 
 import SettingsContainer from './settingsContainer'
 import EditPlayerModal from './editPlayerModal'
@@ -51,13 +51,13 @@ export default class App extends Component {
     constructor(props) {
         super(props)
 
-        var defaultPlayer1 = Player("Fred", 20 , null, 0); 
-        var defaultPlayer2 = Player("Daryll", 20, null, 1); 
+        var defaultPlayer1 = Player("Fred", 20, null, 0);
+        var defaultPlayer2 = Player("Daryll", 20, null, 1);
 
         this.state = {
             data: [
                 defaultPlayer1, defaultPlayer2
-             ],
+            ],
             showCounters: true,
             counterIndex: 0,
             selectedKey: 1,
@@ -174,11 +174,11 @@ export default class App extends Component {
         let data = this.state.data;
         const dataLength = data.length;
 
-        var newPlayer = Player("player",20, null, dataLength); 
+        var newPlayer = Player("player", 20, null, dataLength);
         //data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
 
-        data.push(newPlayer); 
-        
+        data.push(newPlayer);
+
         this.setState({
             data: data,
         })
@@ -189,13 +189,18 @@ export default class App extends Component {
      */
     deletePlayer = () => {
         let data = this.state.data;
-
         const index = data.key;
         let TKey = this.state.selectedKey;
+        
         this.setState({
             selectedKey: 0,
         })
-        data.splice({index: TKey});
+
+        data.splice(TKey, 1);
+
+        this.setState({
+            data:data
+        })
     }
 
     /**
@@ -336,7 +341,7 @@ export default class App extends Component {
                         plusCounterValue={this.plusCounterValue}
                         setEditCounterModalVisible={this.setEditCounterModalVisible}
 
-                        />
+                    />
 
                 )
 
@@ -352,7 +357,7 @@ export default class App extends Component {
                 return (
                     <SettingsContainer
                         settingsContainerVisible={this.setSettingsVisible}
-                        />
+                    />
                 )
             }
             else {
@@ -376,7 +381,7 @@ export default class App extends Component {
 
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
-                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} setVis={this.setEditModalVisible}/>
+                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} setVis={this.setEditModalVisible} />
 
                 </View>
 
@@ -387,7 +392,7 @@ export default class App extends Component {
                 </View>
 
 
-                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} onSelectPlayer={this.selectPlayer} delete={this.deletePlayer}/>
+                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} onSelectPlayer={this.selectPlayer} delete={this.deletePlayer} />
 
                 <EditPlayerModal modalVisible={this.state.editPlayerModalVisible}
                     setModalVisible={this.setPlayerNameModalVisible}
@@ -395,7 +400,7 @@ export default class App extends Component {
                     data={this.state.data}
                     selectedKey={this.state.selectedKey}
                     deletePlayer={this.deletePlayer}
-                    />
+                />
 
                 <PlayerNameModal
                     modalVisible={this.state.playerNameModalVisible}
@@ -403,7 +408,7 @@ export default class App extends Component {
                     setPlayerName={this.setPlayerName}
                     data={this.state.data}
                     selectedKey={this.state.selectedKey}
-                    />
+                />
 
                 <EditCounterModal
                     modalVisible={this.state.editCounterModalVisible}
@@ -413,7 +418,7 @@ export default class App extends Component {
                     counterIndex={this.state.counterIndex}
                     deleteCounter={this.deleteCounter}
                     editCounterName={this.editCounterName}
-                    />
+                />
 
                 {bottomComponent()}
 
