@@ -46,6 +46,9 @@ export default class EditCounterModal extends Component {
 
         let player = this.props.data[this.props.selectedKey];
         let index = this.props.counterIndex;
+        if (player==undefined) {
+            return null;
+        }
 
         return (
 

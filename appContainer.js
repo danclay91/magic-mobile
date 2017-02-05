@@ -7,9 +7,10 @@ import {
     ScrollView
 } from 'react-native'
 import AddPlayer from './addPlayer.js'
+
 import PlayerHolder from './playerHold'
 import Edit from './editModal.js'
-import BackgroundModal from './backgroundModal'
+
 import LifeTotalBox from './lifeTotalBox'
 import SettingsBar from './settingsBar'
 import CounterContainer from './counterContainer'
@@ -22,7 +23,13 @@ import EditCounterModal from './editCounterModal'
 
 import CoinRoller from './coinRoller'
 import ModalMR from './modalMR'
+
 import Player from './player'; 
+
+import SettingsContainer from './settingsContainer'
+import EditPlayerModal from './editPlayerModal'
+import Button from './playerButton'
+
 
 /**
  * example of data --
@@ -50,27 +57,17 @@ export default class App extends Component {
         this.state = {
             data: [
                 defaultPlayer1, defaultPlayer2
-                /*{
-                    name: 'Fred', lifeTotal: 20, color: null, key: 0, counters: [
-                        { name: "Angel 3/3", type: "token", value: 3 },
-                        { name: "EXP Counter", type: "counter", value: 10 },
-                    ]
-                },
-
-                {
-                    name: 'Daryll', lifeTotal: 30, color: null, key: 1, counters: [
-                        { name: "Demon 4/2", type: "token", value: 6 },
-                        { name: "Poison Counter", type: "counter", value: 3 },
-                    ]
-                }*/],
+             ],
             showCounters: true,
             counterIndex: 0,
             selectedKey: 1,
-            modalVisible: false,
+            editModalVisible: false,
             backgroundModalVisible: false,
             playerNameModalVisible: false,
             editCounterModalVisible: false,
-            coinRollerVisible: false, 
+            coinRollerVisible: false,
+            settingsContainerVisible: false,
+            editPlayerModalVisible: false,
             settings: {
                 defaultLife: 20,
             }
@@ -80,9 +77,23 @@ export default class App extends Component {
     /**
      * Used to open coin roller. 
      */
-    setCoinRollerVisible = () =>{
+    setCoinRollerVisible = (visible) => {
+        if (visible == null) {
+            this.setState({
+                coinRollerVisible: !this.state.coinRollerVisible
+            })
+        }
+        else {
+            this.setState({
+                coinRollerVisible: visible
+            })
+        }
+    }
+    /** Used to open Settings button.
+     * */
+    setSettingsVisible = () => {
         this.setState({
-            coinRollerVisible: !coinRollerVisible
+            settingsContainerVisible: !this.state.settingsContainerVisible
         })
     }
 
@@ -178,8 +189,13 @@ export default class App extends Component {
      */
     deletePlayer = () => {
         let data = this.state.data;
+
         const index = data.key;
-        data.splice({ index: 1 })
+        let TKey = this.state.selectedKey;
+        this.setState({
+            selectedKey: 0,
+        })
+        data.splice({index: TKey});
     }
 
     /**
@@ -216,8 +232,8 @@ export default class App extends Component {
 
     }
 
-    setModalVisible = (visible) => {
-        this.setState({ modalVisible: visible });
+    setEditModalVisible = (visible) => {
+        this.setState({ editModalVisible: visible });
     }
 
     setEditCounterModalVisible = (visible, index) => {
@@ -232,6 +248,7 @@ export default class App extends Component {
             })
         }
     }
+
 
     setPlayerNameModalVisible = (visible) => {
         this.setState({
@@ -289,23 +306,66 @@ export default class App extends Component {
         })
     }
 
+
+
+
+    setEditPlayerModalVisible = (visible, index) => {
+
+        this.setState({
+            editPlayerModalVisible: visible,
+        })
+
+        if (visible && index != null) {
+
+            this.setState({
+                playerIndex: index
+            })
+        }
+    }
+
     render() {
 
-        let bottomComponent = ()=>{
-            if(this.state.coinRollerVisible == true){
-                
+        let bottomComponent = () => {
+            if (this.state.coinRollerVisible == true) {
+                return (
+
+                    <CounterContainer
+                        data={this.state.data}
+                        selectedKey={this.state.selectedKey}
+                        minusCounterValue={this.minusCounterValue}
+                        plusCounterValue={this.plusCounterValue}
+                        setEditCounterModalVisible={this.setEditCounterModalVisible}
+
+                        />
+
+                )
+
             } else {
                 return (
-                <CounterContainer
-                    data={this.state.data}
-                    selectedKey={this.state.selectedKey}
-                    minusCounterValue={this.minusCounterValue}
-                    plusCounterValue={this.plusCounterValue}
-                    setEditCounterModalVisible={this.setEditCounterModalVisible}
-
-                />); 
+                    <CoinRoller />
+                );
             }
         }
+
+        let settingsContainer = () => {
+            if (this.state.settingsContainerVisible == true) {
+                return (
+                    <SettingsContainer
+                        settingsContainerVisible={this.setSettingsVisible}
+                        />
+                )
+            }
+            else {
+                return (
+                    <SettingsBar
+                        addToken={this.addToken}
+                        addCounter={this.addCounter}
+                        coinRollerVisible={this.setCoinRollerVisible}
+                        settingsContainerVisible={this.setSettingsVisible} />
+                )
+            }
+        }
+
 
         return (
             <View style={{ flex: 1, backgroundColor: 'black' }}>
@@ -315,25 +375,27 @@ export default class App extends Component {
                 <LifeTotalBox setModalVisible={this.setPlayerNameModalVisible} data={this.state.data} selectedKey={this.state.selectedKey} minus={this.decrementLife} plus={this.incrementLife} />
 
 
-                <View style={{ flex: 1, backgroundColor: 'black' }} >
-                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} openEdit={this.setBackGroundModalVisible} />
+                <View style={{ flex: 1, backgroundColor: 'blue' }} >
+                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} setVis={this.setEditModalVisible}/>
+
                 </View>
 
 
 
                 <View style={{ flex: 1.50, backgroundColor: 'black' }}>
-                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} />
+                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} editPlayerModal={this.setEditPlayerModalVisible} />
                 </View>
 
 
+                <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} onSelectPlayer={this.selectPlayer} delete={this.deletePlayer}/>
 
-
-                <BackgroundModal data={this.state.data} selectedKey={this.state.selectedKey}
-                    modalVisible={this.state.backgroundModalVisible} setModalVisible={this.setBackGroundModalVisible}
-
-                    setColor={this.setColor} deletePlayer={this.deletePlayer} />
-
-
+                <EditPlayerModal modalVisible={this.state.editPlayerModalVisible}
+                    setModalVisible={this.setPlayerNameModalVisible}
+                    setPlayerName={this.setPlayerName}
+                    data={this.state.data}
+                    selectedKey={this.state.selectedKey}
+                    deletePlayer={this.deletePlayer}
+                    />
 
                 <PlayerNameModal
                     modalVisible={this.state.playerNameModalVisible}
@@ -356,8 +418,7 @@ export default class App extends Component {
                 {bottomComponent()}
 
 
-                <SettingsBar addToken={this.addToken} addCounter={this.addCounter} />
-
+                {settingsContainer()}
 
 
 
@@ -370,5 +431,3 @@ export default class App extends Component {
 
 
 
-/*   
-*/

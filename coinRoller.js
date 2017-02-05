@@ -42,7 +42,7 @@ export default class CoinRoller extends Component {
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomCoinFlip(1, 2) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }} >
 
@@ -50,13 +50,13 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomNumberGenerator(1, 4) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }} >
 
@@ -64,13 +64,13 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomNumberGenerator(1, 6) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }} >
 
@@ -78,12 +78,12 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomNumberGenerator(1, 10) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }} >
 
@@ -91,12 +91,12 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomNumberGenerator(1, 12) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }} >
 
@@ -104,12 +104,12 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
                 <View style={{ flex: 1, flexDirection: 'row' }} >
-                    <View style={{ flex: .5 }} />
+                   
                     <TouchableOpacity style={styles.coinDieList} onPress={() => { this.randomNumberGenerator(1, 20) } }>
                         <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center', }} >
 
@@ -117,7 +117,7 @@ export default class CoinRoller extends Component {
                         </View>
 
                     </TouchableOpacity>
-                    <View style={{ flex: .5 }} />
+                   
                 </View>
 
 
@@ -138,13 +138,13 @@ export default class CoinRoller extends Component {
 
 var styles = StyleSheet.create({
     coinDieList: {
-        borderWidth: 1,
+        borderWidth: .5,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
         borderColor: 'black',
-        borderRadius: 20,
+        borderRadius: 10,
         backgroundColor: '#babdc1',
  
 
@@ -163,6 +163,7 @@ var styles = StyleSheet.create({
         backgroundColor: 'black',
         borderColor: 'white',
         borderTopWidth: 2,
+        borderBottomWidth:2,
         paddingTop:1,
         paddingBottom:1
     }

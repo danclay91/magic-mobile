@@ -1,39 +1,67 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Modal,
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet, ScrollView
+} from 'react-native';
 
-export default class ModalExample extends Component {
-    constructor (props){
-        super(props)
-    }
-  state = {
-    modalVisible: false,
-  }
+import EditButton from './editButtons.js'
+import Functions from './editFunctions.js'
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+export default class EditModal extends Component {
+  constructor(props) {
+    super(props)
   }
 
   render() {
+
+    let editButtons = () => {
+      let edits = this.props.data.map((_player, index) => {
+        return (
+          <EditButton onSelectPlayer={this.props.onSelectPlayer} data={this.props.data} key={index} id={index} player={_player} />
+        )
+      })
+      return edits;
+    }
+
+
     return (
       <View >
         <Modal
           animationType={"slide"}
-          transparent={true}
-          visible={this.props.modalVisible}
-          onRequestClose={() => {this.props.setModalVisible(false)}}>
-         <View style={{marginRight:50, marginBottom:50, marginLeft:50 ,flex:1,backgroundColor:'white',marginTop: 50}}>
-          <View>
-            <Text>Hello World!</Text>
-
-        
-
+          visible={this.props.editModalVisible}
+          onRequestClose={() => { this.props.setVis(false) } }>
+          <View style={styles.editContainer}>
+            <ScrollView>
+              {editButtons()}
+            </ScrollView>
           </View>
-         </View>
-         <TouchableOpacity>
 
-         </TouchableOpacity>
+          <Functions style={styles.buttonContainer} delete={this.props.delete} />
         </Modal>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  editContainer: {
+    flex: 8,
+    flexDirection: 'column',
+  },
+  buttonContainer: {
+    flex: 2,
+  }
+});
+
+ /*let editButtons = () => {
+      let edits = this.props.data.map((_player, index) => {
+        return (
+          <editButton onSelectPlayer={this.props.onSelectPlayer} data={this.props.data} key={index} id={index} player={_player} />
+        )
+      })
+      return edits;
+    }
+*/

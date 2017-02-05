@@ -8,6 +8,7 @@ import {
 
 } from 'react-native'
 
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
@@ -59,6 +60,9 @@ export default class LifeTotalBox extends Component {
     }
 
     renderLifeScore(selectedPlayer) {
+        if (selectedPlayer == undefined) {
+            return null;
+        }
         return (
             <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
 
@@ -77,6 +81,7 @@ export default class LifeTotalBox extends Component {
         } else {
             playerName = selectedPlayer.name;
         }
+
 
         return (
             <View style={styles.nameBox}>
@@ -156,7 +161,7 @@ var styles = StyleSheet.create({
 
     nameText: {
         textAlign: 'center',
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'Teko-Medium',
         color: 'white',
     }

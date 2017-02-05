@@ -9,9 +9,7 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FounIcon from 'react-native-vector-icons/Foundation';
-export default class SettingsBar extends Component {
-
-
+export default class SettingsContainer extends Component {
     render() {
 
         return (
@@ -32,7 +30,7 @@ export default class SettingsBar extends Component {
 
                 <TouchableOpacity onPress={() => this.props.coinRollerVisible()} style={{ flex: .50, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1 }}>
                     <View>
-                        <FounIcon name="contrast" size={25} color='white' />
+                      <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>About</Text>
 
                     </View>
                 </TouchableOpacity>
@@ -41,17 +39,17 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={() => { this.props.addToken(); this.props.coinRollerVisible(true) } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
+                <TouchableOpacity onPress={() => this.props.addToken()} style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+                        <Icon name="refresh" size={20} color="#bcdbbe" />
 
                     </View>
 
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Tokens</Text>
+                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Reset</Text>
                     </View>
 
                 </TouchableOpacity>
@@ -62,17 +60,17 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={() => { this.props.addCounter(); this.props.coinRollerVisible(true) } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
+                <TouchableOpacity onPress={() => this.props.addCounter()} style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+                        <Icon name="plus-circle" size={20} color="#bcdbbe" />
 
                     </View>
 
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Counters</Text>
+                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>New Game</Text>
                     </View>
 
                 </TouchableOpacity>
@@ -80,9 +78,9 @@ export default class SettingsBar extends Component {
 
 
 
-                <TouchableOpacity onPress={() => { this.props.settingsContainerVisible() } } style={{ flex: .50, alignItems: 'center', justifyContent: 'center', borderLeftWidth: 1 }}>
+                <TouchableOpacity onPress={() => this.props.settingsContainerVisible()} style={{ flex: .50, alignItems: 'center', justifyContent: 'center', borderLeftWidth: 1 }}>
                     <View>
-                        <FounIcon name="widget" size={25} color='white' />
+                        <Icon name="reply" size={20} color='white' />
                     </View>
                 </TouchableOpacity>
 
