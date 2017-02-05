@@ -8,10 +8,7 @@ import {
 
 } from 'react-native'
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7c029e58ce01ec32f63ccf467eef24951b3fc0e4
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
