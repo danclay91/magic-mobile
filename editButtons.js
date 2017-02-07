@@ -4,7 +4,8 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
-    Text
+    Text,
+    TextInput
 } from 'react-native'
 
 
@@ -44,7 +45,7 @@ export default class EditButton extends Component {
 
         return (
             <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} >
-                <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
+                <TextInput style={styles.playerTabNames}>{this.props.player.name}</TextInput>
                 <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color:'black' }}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
         )

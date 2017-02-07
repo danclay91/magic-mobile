@@ -144,8 +144,9 @@ export default class App extends Component {
     decrementLife = () => {
         let data = this.state.data;
         const key = this.state.selectedKey;
-
+        if(data[key].lifeTotal>0){
         data[key].lifeTotal--;
+        }
 
         this.setState({
             data: data,
@@ -311,7 +312,36 @@ export default class App extends Component {
         })
     }
 
+    resetGame = () => {
+        let data = this.state.data;
 
+        for(i=0; i<data.length; i++ ){
+            data[i].lifeTotal = 20;
+            for(k=0; k<data[i].counters.length; k++){
+                data[i].counters.splice(0, data[i].counters.length)
+            }
+            for(j=0; j<data[i].counters.length; j++){
+                data[i].counters.splice(0, data[i].counters.length)
+            }
+        }
+        this.setState({
+            data: data
+        })
+    }
+
+    newGame = () => {
+        let data = this.state.data;
+        var defaultPlayer1 = Player("Fred", 20, null, 0);
+        var defaultPlayer2 = Player("Daryll", 20, null, 1);
+        data = [defaultPlayer1, defaultPlayer2];
+        this.setState({
+            data: data,
+        })
+        //the selectedKey does not change properly unless I set it up like this
+        this.setState({
+            selectedKey: 0
+        })
+    }
 
 
     setEditPlayerModalVisible = (visible, index) => {
@@ -356,7 +386,7 @@ export default class App extends Component {
             if (this.state.settingsContainerVisible == true) {
                 return (
                     <SettingsContainer
-                        settingsContainerVisible={this.setSettingsVisible}
+                        settingsContainerVisible={this.setSettingsVisible} newGame={this.newGame} resetGame={this.resetGame}
                     />
                 )
             }
@@ -424,7 +454,6 @@ export default class App extends Component {
 
 
                 {settingsContainer()}
-
 
 
 
