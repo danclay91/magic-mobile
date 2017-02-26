@@ -104,8 +104,17 @@ export default class LifeTotalBox extends Component {
     }
 
     render() {
+        // TEMPORARY FIX 
+        if(this.props.data == null){
+            return (
+                <View style={styles.lifeBox} >
+                    <View style={styles.topContainer}>
+                    </View>
+                </View>
+            )
+         }
 
-        let selectedPlayer = this.props.data[this.props.selectedKey]
+        selectedPlayer = this.props.data[this.props.selectedKey]
 
         return (
 

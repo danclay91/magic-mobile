@@ -12,7 +12,9 @@ import {
     View,
     StyleSheet,
     Text,
-    ScrollView
+    ScrollView,
+    AppState,
+    AsyncStorage,
 } from 'react-native'
 
 import AddPlayer from '../playerOptions'
@@ -63,6 +65,7 @@ export default class App extends Component {
             data: [
                 defaultPlayer1, defaultPlayer2
             ],
+            //TODO: Put all settings in one object, or put all data into one object.
             showCounters: true,
             counterIndex: 0,
             selectedKey: 1,
@@ -76,6 +79,38 @@ export default class App extends Component {
             settings: {
                 defaultLife: 20,
             }
+        }
+    }
+
+    /**
+     * Add event listener to AppState to save or load data. 
+     */
+    componentWillMount(){
+        AppState.addEventListener('change',this._handleStateChange); 
+    }
+
+    /**
+     * Remove event listener when app is closed. 
+     */
+    componentWillUnmount(){
+        AppState.removeEventListener('change',this._handleStateChange);
+    }
+
+    /**
+     * Handle appState changes by saving or loading data. 
+     */
+    _handleStateChange = (currentAppState) => {
+
+        //If appState change was to 'active' then load data. 
+        if(currentAppState == 'active'){
+            AsyncStorage.getItem('dataKey').then((data)=>{
+                this.setState({'data': JSON.parse(data)})
+            }).done(); 
+        }
+        //If appState changed to 'inactive' or 'background' then save data. 
+        else {
+            alert('set item'); 
+            AsyncStorage.setItem('dataKey',JSON.stringify(this.state.data)); 
         }
     }
 
@@ -94,8 +129,10 @@ export default class App extends Component {
             })
         }
     }
-    /** Used to open Settings button.
-     * */
+
+    /** 
+     * Used to open Settings button.
+     */
     setSettingsVisible = () => {
         this.setState({
             settingsContainerVisible: !this.state.settingsContainerVisible
