@@ -1,3 +1,9 @@
+/**************************************************
+ * 
+ * Used to visually represent a token counter. 
+ * 
+ *************************************************/
+
 import React, { Component } from 'react'
 import {
     Text,

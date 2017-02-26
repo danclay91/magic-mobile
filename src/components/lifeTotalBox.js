@@ -1,3 +1,14 @@
+/*********************************************************
+ * 
+ * Responsible for rendering the selected player's life total 
+ * as well as providing the ability to increment/decrement life. 
+ * 
+ * functions received from appContainer: 
+ * -setPlayerNameModalVisible() 
+ * -incrementLife() 
+ * -decrementLife() 
+ *********************************************************/
+
 import React, { Component } from 'react'
 import {
     Text,

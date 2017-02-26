@@ -1,15 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+/*************************************************************
+ * 
+ * Absolute root for running application on Android OS. 
+ * 
+ *************************************************************/
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
 } from 'react-native';
 
-import App from './appContainer'; 
+import App from './src/components/containers/appContainer'; 
 
 
 export default class magicMobile extends Component {

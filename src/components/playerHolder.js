@@ -1,3 +1,12 @@
+/****************************************************
+ * 
+ * PlayerHolder is responsible for containing and rendering 
+ * playerButton components for each player found the data recieved 
+ * from appContainer. 
+ * 
+ ***************************************************/
+
+
 import React, { Component } from 'react';
 import {
     View,
@@ -12,7 +21,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import FounIcon from 'react-native-vector-icons/Foundation';
 
 
-export default class Hold extends Component {
+export default class PlayerHolder extends Component {
 
 
 

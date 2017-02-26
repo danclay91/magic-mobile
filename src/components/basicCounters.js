@@ -1,3 +1,9 @@
+/***********************************************
+ * 
+ * Used to visually represent a basic counter. 
+ * 
+ **********************************************/
+
 import React, { Component } from 'react'
 import {
     Text,

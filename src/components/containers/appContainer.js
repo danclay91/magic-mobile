@@ -1,3 +1,11 @@
+/************************************************************
+ * 
+ * appContainer serves as the root component for entire application. 
+ * It holds the primary state as well as most functions. 
+ * It passes functions and state down to child components.
+ * 
+ ************************************************************/
+
 import React, { Component } from 'react'
 
 import {
@@ -6,29 +14,26 @@ import {
     Text,
     ScrollView
 } from 'react-native'
-import AddPlayer from './addPlayer.js'
 
-import PlayerHolder from './playerHold'
-import Edit from './editModal.js'
+import AddPlayer from '../playerOptions'
 
-import LifeTotalBox from './lifeTotalBox'
-import SettingsBar from './settingsBar'
+import PlayerHolder from '../playerHolder'
+//TODO: Rename this. It is too ambiguous. 
+import Edit from '../modals/editModal.js'
+import LifeTotalBox from '../lifeTotalBox'
+import SettingsBar from '../settingsBar'
 import CounterContainer from './counterContainer'
-import TokenCounters from './tokenCounters'
-import BasicCounters from './basicCounters'
-
-import PlayerNameModal from './playerNameModal'
-import EditCounterModal from './editCounterModal'
-
-
-import CoinRoller from './coinRoller'
-import ModalMR from './modalMR'
-
-import Player from './player';
-
+// These two counter types could likely be reduced to one. 
+import TokenCounters from '../tokenCounters'
+import BasicCounters from '../basicCounters'
+import PlayerNameModal from '../modals/playerNameModal'
+import EditCounterModal from '../modals/editCounterModal'
+import EditPlayerModal from '../modals/editPlayerModal'
+import CoinRoller from '../numberGenerators'
+import ModalMR from '../modals/modalMR'
+import Player from '../../js/player';
 import SettingsContainer from './settingsContainer'
-import EditPlayerModal from './editPlayerModal'
-import Button from './playerButton'
+//import Button from './playerButton'
 
 
 /**
@@ -144,9 +149,8 @@ export default class App extends Component {
     decrementLife = () => {
         let data = this.state.data;
         const key = this.state.selectedKey;
-        if(data[key].lifeTotal>0){
+
         data[key].lifeTotal--;
-        }
 
         this.setState({
             data: data,
@@ -312,36 +316,7 @@ export default class App extends Component {
         })
     }
 
-    resetGame = () => {
-        let data = this.state.data;
 
-        for(i=0; i<data.length; i++ ){
-            data[i].lifeTotal = 20;
-            for(k=0; k<data[i].counters.length; k++){
-                data[i].counters.splice(0, data[i].counters.length)
-            }
-            for(j=0; j<data[i].counters.length; j++){
-                data[i].counters.splice(0, data[i].counters.length)
-            }
-        }
-        this.setState({
-            data: data
-        })
-    }
-
-    newGame = () => {
-        let data = this.state.data;
-        var defaultPlayer1 = Player("Fred", 20, null, 0);
-        var defaultPlayer2 = Player("Daryll", 20, null, 1);
-        data = [defaultPlayer1, defaultPlayer2];
-        this.setState({
-            data: data,
-        })
-        //the selectedKey does not change properly unless I set it up like this
-        this.setState({
-            selectedKey: 0
-        })
-    }
 
 
     setEditPlayerModalVisible = (visible, index) => {
@@ -386,7 +361,7 @@ export default class App extends Component {
             if (this.state.settingsContainerVisible == true) {
                 return (
                     <SettingsContainer
-                        settingsContainerVisible={this.setSettingsVisible} newGame={this.newGame} resetGame={this.resetGame}
+                        settingsContainerVisible={this.setSettingsVisible}
                     />
                 )
             }
@@ -454,6 +429,7 @@ export default class App extends Component {
 
 
                 {settingsContainer()}
+
 
 
 

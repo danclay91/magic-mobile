@@ -1,3 +1,11 @@
+/*********************************************************************
+ * 
+ * counterContainer is the component that holds all counters. 
+ * Responsible for creating Counter components based on data received from 
+ * its parent component, AppContainer. 
+ * 
+ ********************************************************************/
+
 import React, { Component } from 'react'
 
 import {
@@ -8,8 +16,8 @@ import {
     ScrollView
 } from 'react-native'
 
-import Token from './tokenCounters'
-import Counter from './basicCounters'
+import Token from '../tokenCounters'
+import Counter from '../basicCounters'
 
 export default class CounterContainer extends Component {
 

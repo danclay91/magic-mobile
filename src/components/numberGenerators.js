@@ -1,3 +1,11 @@
+/*****************************************************
+ * 
+ * Creates the component the provides user with options 
+ * to use a random number generator. Examples include, 
+ * coin toss and multiple dice rolls.  * 
+ * 
+ ****************************************************/
+
 import React, { Component } from 'react'
 
 import {

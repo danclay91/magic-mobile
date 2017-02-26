@@ -1,3 +1,10 @@
+/***************************************************
+ * 
+ * Component representing the modal window that appears and 
+ * gives user the ability to change a user's name. 
+ * 
+ ***************************************************/
+
 import React, { Component } from 'react'
 import {
     Text,
@@ -11,9 +18,6 @@ import {
 
 
 export default class PlayerName extends Component {
-
-
-
 
     render() {
         if (this.props.data[this.props.selectedKey]==undefined){

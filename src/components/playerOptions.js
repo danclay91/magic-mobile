@@ -1,3 +1,16 @@
+/************************************************************
+ * 
+ * playerOptions is the component responsible for displaying buttons 
+ * that allow user to add or edit player on the main app screen. 
+ * Receives the following functions for appContainer: 
+ * 
+ * -addPlayer()
+ * -setEditPlayerModalVisible() 
+ * 
+ * Also receives the entire state object from appContainer. 
+ * 
+ ************************************************************/
+
 import React, { Component } from 'react';
 import {
     View,

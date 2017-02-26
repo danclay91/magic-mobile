@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+/****************************************************
+ * 
+ * //TODO: Write description. 
+ * 
+ ****************************************************/
+
 import {
   Modal,
   Text,
@@ -7,8 +13,8 @@ import {
   StyleSheet, ScrollView
 } from 'react-native';
 
-import EditButton from './editButtons.js'
-import Functions from './editFunctions.js'
+import EditButton from '../editButtons.js'
+import Functions from '../editFunctions.js'
 
 export default class EditModal extends Component {
   constructor(props) {

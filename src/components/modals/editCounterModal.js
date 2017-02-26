@@ -1,3 +1,10 @@
+/********************************************
+ * 
+ * Represents the modal that appears and gives user
+ * the ability to edit counters. 
+ * 
+ ********************************************/
+
 import React, { Component } from 'react'
 import {
     Text,
@@ -11,16 +18,12 @@ import {
 
 
 export default class EditCounterModal extends Component {
-
-
     getCounterValue(player) {
-
         if(player.counters == null || player.counters == undefined){
             return ''; 
         }
 
         if (player.counters.length > 0) {
-
             let counter = player.counters[this.props.counterIndex];
             try {
                 return counter.value.toString();
@@ -113,17 +116,9 @@ export default class EditCounterModal extends Component {
                             </View>
 
                         </View>
-
                         <View style={{ flex: 1 }} />
-
-
                     </View>
-
-
-
-
                 </Modal>
-
             </View>
         )
     }

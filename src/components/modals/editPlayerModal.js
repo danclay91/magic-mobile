@@ -1,3 +1,10 @@
+/*************************************************
+ * 
+ * Component that represents the modal window that allows
+ * user to edit all players. 
+ * 
+ ************************************************/
+
 import React, { Component } from 'react'
 import {
     Text,

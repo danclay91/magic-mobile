@@ -1,8 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+/**********************************************************
+ * 
+ * Absolute root for running application on IOS. 
+ * 
+ *********************************************************/
 
 import React, { Component } from 'react';
 import {

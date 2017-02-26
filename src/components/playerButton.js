@@ -1,3 +1,11 @@
+/****************************************
+ * 
+ * Component that represents a single player. 
+ * Allows user to select a player to be viewed as well as 
+ * edit/delete modal appearing on longpresses. 
+ * 
+ ***************************************/
+
 import React, { Component } from 'react';
 import {
     Image,

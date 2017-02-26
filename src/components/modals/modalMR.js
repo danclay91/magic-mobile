@@ -1,3 +1,9 @@
+/***********************************************
+ * 
+ * //TODO: Rename this and add description. 
+ * 
+ **********************************************/
+
 import React, { Component } from 'react'
 import {
   Text,
