@@ -437,7 +437,7 @@ export default class App extends Component {
                 <Edit editModalVisible={this.state.editModalVisible} setVis={this.setEditModalVisible} data={this.state.data} onSelectPlayer={this.selectPlayer} delete={this.deletePlayer} />
 
                 <EditPlayerModal modalVisible={this.state.editPlayerModalVisible}
-                    setModalVisible={this.setEditModalVisible}
+                    setModalVisible={this.setEditPlayerModalVisible}
                     setPlayerName={this.setPlayerName}
                     data={this.state.data}
                     selectedKey={this.state.selectedKey}
