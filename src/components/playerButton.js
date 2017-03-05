@@ -82,7 +82,12 @@ export default class Button extends Component {
 
 
         return (
-            <TouchableOpacity style={styles.playerTab} onPress={() => this.props.onSelectPlayer(this.props.id)} onLongPress={() => this.props.editPlayerModal(true, index)} >
+            <TouchableOpacity style={styles.playerTab} 
+                onPress={() => this.props.onSelectPlayer(this.props.id)} 
+                onLongPress={() => {
+                    this.props.onSelectPlayer(this.props.id)
+                    this.props.editPlayerModal(true, index)} 
+                    }>
                 <Text style={styles.playerTabNames}>{this.props.player.name}</Text>
                 <Text style={{ textAlign: 'center', fontSize: 20, fontFamily: 'Teko-Medium', flex: 1, color: fontColor }}>{this.props.player.lifeTotal}</Text>
             </TouchableOpacity>
