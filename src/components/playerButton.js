@@ -111,8 +111,6 @@ var styles = StyleSheet.create({
         margin: 1,
         marginBottom: 2
 
-
-
     },
     playerTabNames: {
         textAlign: 'center',

@@ -33,13 +33,12 @@ export default class EditCounterModal extends Component {
         }
     }
 
-    getCounterName(player) {
-        if(player.counter == null || player.counter == undefined){
+    getCounterName(player) {    
+        if(player.counters == null || player.counters == undefined){
             return '';
         }
 
         if (player.counters.length > 0) {
-
             let counter = player.counters[this.props.counterIndex];
             return counter.name;
         }
@@ -72,8 +71,8 @@ export default class EditCounterModal extends Component {
                                 <TextInput
                                     style={{ width: 200, textAlign: 'center', color:'white' }}
                                     defaultValue={this.getCounterName(player)}
-                                    onChange={(text, index) => {
-                                        this.props.editCounterName(text,index); 
+                                    onChangeText ={(text) => {
+                                        this.props.editCounterName(text,this.props.counterIndex); 
                                     } }
                                     />
                             </View>

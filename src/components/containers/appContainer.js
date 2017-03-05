@@ -35,6 +35,7 @@ import CoinRoller from '../numberGenerators'
 import ModalMR from '../modals/modalMR'
 import Player from '../../js/player';
 import SettingsContainer from './settingsContainer'
+import SetLifeModal from '../modals/setLifeModal'
 //import Button from './playerButton'
 
 
@@ -76,6 +77,7 @@ export default class App extends Component {
             coinRollerVisible: false,
             settingsContainerVisible: false,
             editPlayerModalVisible: false,
+            lifeModalVisible: false,
             settings: {
                 defaultLife: 20,
             }
@@ -85,15 +87,15 @@ export default class App extends Component {
     /**
      * Add event listener to AppState to save or load data. 
      */
-    componentWillMount(){
-        AppState.addEventListener('change',this._handleStateChange); 
+    componentWillMount() {
+        AppState.addEventListener('change', this._handleStateChange);
     }
 
     /**
      * Remove event listener when app is closed. 
      */
-    componentWillUnmount(){
-        AppState.removeEventListener('change',this._handleStateChange);
+    componentWillUnmount() {
+        AppState.removeEventListener('change', this._handleStateChange);
     }
 
     /**
@@ -102,15 +104,15 @@ export default class App extends Component {
     _handleStateChange = (currentAppState) => {
 
         //If appState change was to 'active' then load data. 
-        if(currentAppState == 'active'){
-            AsyncStorage.getItem('dataKey').then((data)=>{
-                this.setState({'data': JSON.parse(data)})
-            }).done(); 
+        if (currentAppState == 'active') {
+            AsyncStorage.getItem('dataKey').then((data) => {
+                this.setState({ 'data': JSON.parse(data) })
+            }).done();
         }
         //If appState changed to 'inactive' or 'background' then save data. 
         else {
-            alert('set item'); 
-            AsyncStorage.setItem('dataKey',JSON.stringify(this.state.data)); 
+            alert('set item');
+            AsyncStorage.setItem('dataKey', JSON.stringify(this.state.data));
         }
     }
 
@@ -233,7 +235,7 @@ export default class App extends Component {
         let data = this.state.data;
         const index = data.key;
         let TKey = this.state.selectedKey;
-        
+
         this.setState({
             selectedKey: 0,
         })
@@ -241,7 +243,7 @@ export default class App extends Component {
         data.splice(TKey, 1);
 
         this.setState({
-            data:data
+            data: data
         })
     }
 
@@ -296,6 +298,9 @@ export default class App extends Component {
         }
     }
 
+    setLifeModalVisible = (visible) =>{
+        this.setState({lifeModalVisible:visible})
+    }
 
     setPlayerNameModalVisible = (visible) => {
         this.setState({
@@ -335,7 +340,7 @@ export default class App extends Component {
 
     deleteCounter = (index) => {
         let data = this.state.data;
-
+        alert(index);
         data[this.state.selectedKey].counters[index]--;
 
         this.setState({
@@ -353,9 +358,28 @@ export default class App extends Component {
         })
     }
 
+    /**
+     * Used to set life total of all players. 
+     */
+    setLifeTotal = (value, valid) =>{
+        //Check if value is valid 
+        if(!valid){
+            alert('Invalid value');
+        } else {
+            let val = parseInt(value); 
+            let data = this.state.data; 
 
+            for(var i = 0; i< data.length; i++){
+                data[i].lifeTotal = val; 
+            }
 
+            this.setState({data:data, lifeModalVisible: false});
+        }
+    }
 
+    /**
+     * Used to set visibility of editPlayerModal 
+     */
     setEditPlayerModalVisible = (visible, index) => {
 
         this.setState({
@@ -399,6 +423,7 @@ export default class App extends Component {
                 return (
                     <SettingsContainer
                         settingsContainerVisible={this.setSettingsVisible}
+                        setLifeModalVisible = {this.setLifeModalVisible}
                     />
                 )
             }
@@ -460,6 +485,12 @@ export default class App extends Component {
                     counterIndex={this.state.counterIndex}
                     deleteCounter={this.deleteCounter}
                     editCounterName={this.editCounterName}
+                />
+
+                <SetLifeModal
+                    modalVisible = {this.state.lifeModalVisible}
+                    setModalVisible = {this.setLifeModalVisible}
+                    setLifeTotal = {this.setLifeTotal}
                 />
 
                 {bottomComponent()}

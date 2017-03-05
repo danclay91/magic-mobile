@@ -1,7 +1,7 @@
 /**********************************************************
  * 
- * TODO: Provide info on settings container. 
- * 
+ * Holds buttons that appear when clicking sprocket.  
+ * Buttons contained include Set All Life, Reset Game
  * 
  *********************************************************/
 
@@ -46,7 +46,7 @@ export default class SettingsContainer extends Component {
 
 
 
-                <TouchableOpacity onPress={() => this.props.resetGame()} style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
+                <TouchableOpacity onPress={() => this.props.setLifeModalVisible(true)} style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
 
@@ -56,16 +56,10 @@ export default class SettingsContainer extends Component {
 
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Reset</Text>
+                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Set All Life</Text>
                     </View>
 
                 </TouchableOpacity>
-
-
-
-
-
-
 
                 <TouchableOpacity onPress={() => this.props.newGame()} style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
