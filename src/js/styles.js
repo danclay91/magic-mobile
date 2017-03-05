@@ -6,4 +6,5 @@ export const tekoMedium = "Teko-Medium";
 export const tekoRegular = "Teko-Regular"; 
 export const tekoSemi = "Teko-SemiBold"; 
 
-
+//colors 
+export const modalGrey = '#a3a7af'
