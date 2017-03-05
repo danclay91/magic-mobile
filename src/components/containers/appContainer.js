@@ -109,7 +109,6 @@ export default class App extends Component {
         }
         //If appState changed to 'inactive' or 'background' then save data. 
         else {
-            alert('set item'); 
             AsyncStorage.setItem('dataKey',JSON.stringify(this.state.data)); 
         }
     }
@@ -172,7 +171,7 @@ export default class App extends Component {
         data = this.state.data;
 
         data.forEach(function (player) {
-            player.lifeTotal = 0;
+            player.lifeTotal = this.state.settings.defaultLife;
         }, this);
 
         this.setState({
@@ -347,7 +346,6 @@ export default class App extends Component {
         let data = this.state.data;
 
         data[this.state.selectedKey].counters[index].name = name;
-
         this.setState({
             data: data
         })
@@ -399,6 +397,7 @@ export default class App extends Component {
                 return (
                     <SettingsContainer
                         settingsContainerVisible={this.setSettingsVisible}
+                        resetGame={this.resetLife}
                     />
                 )
             }
