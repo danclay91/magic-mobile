@@ -24,20 +24,21 @@ export default class SetLifeModal extends Component {
         this.state = {
             valid: false
         }
-
-
     }
 
     /**
      * Check if the desired value contains digits only.
      */
     validateValue() {
-        let numbers = '0123456789'
-
         value = this.state.changeValue;
 
         if (value <= 0) {
             this.setState({ valid: false });
+            return;
+        }
+
+        if(value>999 || value<-999){
+            this.setState({valid:false})
             return;
         }
 
@@ -46,7 +47,6 @@ export default class SetLifeModal extends Component {
         } else {
             this.setState({ valid: false })
         }
-
     }
 
     render() {
@@ -61,6 +61,7 @@ export default class SetLifeModal extends Component {
                         <View style={{ alignItems: 'center' }}>
                             <Text>Set Life</Text>
                             <TextInput
+                                style = {{width:50}}
                                 keyboardType="numeric"
                                 multiline={false}
                                 onChangeText={(text) => { this.setState({changeValue: text}) }}

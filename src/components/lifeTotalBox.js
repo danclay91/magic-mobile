@@ -73,10 +73,21 @@ export default class LifeTotalBox extends Component {
         if (selectedPlayer == undefined) {
             return null;
         }
+
+        //determine font styling based on digits of lifeTotal
+        let digits = selectedPlayer.lifeTotal.toString().length; 
+        var selectedStyle; 
+
+        if(digits>2){
+            selectedStyle = styles.smallLifeScore;
+        } else {
+            selectedStyle = styles.regularLifeScore;
+        }
+
         return (
             <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
 
-                <Text style={styles.lifeScore}>{selectedPlayer.lifeTotal}</Text>
+                <Text style={selectedStyle}>{selectedPlayer.lifeTotal}</Text>
 
             </View>
         )
@@ -166,11 +177,18 @@ var styles = StyleSheet.create({
 
     },
 
-    lifeScore: {
+    regularLifeScore: {
         fontSize: 100,
         fontFamily: 'Teko-Medium',
         color: '#FFFFFF',
     },
+
+    smallLifeScore: {
+        fontSize: 60,
+        fontFamily: 'Teko-Medium',
+        color: '#FFFFFF',
+    },
+
 
     nameBox: {
         flex: 1,

@@ -12,7 +12,9 @@ import {
     StyleSheet,
     Modal,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    KeyboardAvoidingView,
+    Dimensions,
 } from 'react-native'
 
 
@@ -20,21 +22,22 @@ import {
 export default class PlayerName extends Component {
 
     render() {
-        if (this.props.data[this.props.selectedKey]==undefined){
+        if (this.props.data[this.props.selectedKey] == undefined) {
             return null;
         }
-            let playerName = this.props.data[this.props.selectedKey].name;
+        let playerName = this.props.data[this.props.selectedKey].name;
 
         return (
 
-            <View>
+            <KeyboardAvoidingView>
                 <Modal
                     animationType={"slide"}
                     transparent={true}
                     visible={this.props.modalVisible}
                     onRequestClose={() => this.props.setModalVisible(false)}
-                    >
-                    <View style={{ flex: 1, marginLeft: 10, marginRight: 10, }}>
+                >
+                    <View style={{ marginLeft: 10, marginRight: 10, height: Dimensions.get('window').height * .3,
+                        width: Dimensions.get('window').width,}}>
 
 
                         <View style={{ flex: 1, backgroundColor: '#a3a7af', borderWidth: 1, paddingTop: 20, borderRadius: 24, borderColor: 'white', alignItems: 'center' }}>
@@ -48,7 +51,7 @@ export default class PlayerName extends Component {
                                 <TextInput style={{ width: 200, borderColor: 'white', borderWidth: 1, color: 'white', alignItems: 'center', justifyContent: 'center' }}
                                     onChangeText={(text) => this.props.setPlayerName(text)}
                                     value={playerName}
-                                    />
+                                />
 
                             </View>
 
@@ -58,7 +61,7 @@ export default class PlayerName extends Component {
                                 <TouchableOpacity
                                     style={{ marginBottom: 30, height: 50, width: 100, backgroundColor: '#bcdbbe', borderWidth: 1, borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
                                     onPress={() => this.props.setModalVisible(false)}
-                                    >
+                                >
 
                                     <Text style={{ fontFamily: 'Teko-Medium' }}>Done</Text>
 
@@ -66,18 +69,10 @@ export default class PlayerName extends Component {
                             </View>
 
                         </View>
-
-                        <View style={{ flex: 3 }} />
-
-
                     </View>
-
-
-
-
                 </Modal>
+            </KeyboardAvoidingView>
 
-            </View>
         )
     }
 }

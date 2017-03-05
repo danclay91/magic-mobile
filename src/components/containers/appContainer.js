@@ -67,14 +67,13 @@ export default class App extends Component {
                 defaultPlayer1, defaultPlayer2
             ],
             //TODO: Put all settings in one object, or put all data into one object.
-            showCounters: true,
             counterIndex: 0,
             selectedKey: 1,
             editModalVisible: false,
             backgroundModalVisible: false,
             playerNameModalVisible: false,
             editCounterModalVisible: false,
-            coinRollerVisible: false,
+            coinRollerVisible: true,
             settingsContainerVisible: false,
             editPlayerModalVisible: false,
             lifeModalVisible: false,
@@ -182,6 +181,7 @@ export default class App extends Component {
         });
     }
 
+
     /**
      * Function to pass to PlayerView to handle decreasing life/clicking minus button. 
      */
@@ -189,7 +189,9 @@ export default class App extends Component {
         let data = this.state.data;
         const key = this.state.selectedKey;
 
-        data[key].lifeTotal--;
+        if (data[key].lifeTotal > -999) {
+            data[key].lifeTotal--;
+        }
 
         this.setState({
             data: data,
@@ -203,7 +205,9 @@ export default class App extends Component {
         let data = this.state.data;
         const key = this.state.selectedKey;
 
-        data[key].lifeTotal++;
+        if (data[key].lifeTotal < 999) {
+            data[key].lifeTotal++;
+        }
 
         this.setState({
             data: data,
@@ -271,6 +275,7 @@ export default class App extends Component {
         });
     }
 
+    //TODO: Reimplement this.
     setColor = (color) => {
         let data = this.state.data;
         data[this.state.selectedKey].color = color;
@@ -298,18 +303,17 @@ export default class App extends Component {
         }
     }
 
-    setLifeModalVisible = (visible) =>{
-        this.setState({lifeModalVisible:visible})
+    /**
+     * Set whether or not the setLifeModal is visible.
+     */
+    setLifeModalVisible = (visible) => {
+        this.setState({ lifeModalVisible: visible })
     }
 
     setPlayerNameModalVisible = (visible) => {
         this.setState({
             playerNameModalVisible: visible
         });
-    }
-
-    setBackGroundModalVisible = (visible) => {
-        this.setState({ backgroundModalVisible: visible });
     }
 
     // function for adding a token counter. No opacity uses this yet.
@@ -340,7 +344,6 @@ export default class App extends Component {
 
     deleteCounter = (index) => {
         let data = this.state.data;
-        alert(index);
         data[this.state.selectedKey].counters[index]--;
 
         this.setState({
@@ -361,19 +364,19 @@ export default class App extends Component {
     /**
      * Used to set life total of all players. 
      */
-    setLifeTotal = (value, valid) =>{
+    setLifeTotal = (value, valid) => {
         //Check if value is valid 
-        if(!valid){
+        if (!valid) {
             alert('Invalid value');
         } else {
-            let val = parseInt(value); 
-            let data = this.state.data; 
+            let val = parseInt(value);
+            let data = this.state.data;
 
-            for(var i = 0; i< data.length; i++){
-                data[i].lifeTotal = val; 
+            for (var i = 0; i < data.length; i++) {
+                data[i].lifeTotal = val;
             }
 
-            this.setState({data:data, lifeModalVisible: false});
+            this.setState({ data: data, lifeModalVisible: false });
         }
     }
 
@@ -396,6 +399,7 @@ export default class App extends Component {
 
     render() {
 
+        //Determine which component is displayed at bottom of screen.
         let bottomComponent = () => {
             if (this.state.coinRollerVisible == true) {
                 return (
@@ -423,7 +427,7 @@ export default class App extends Component {
                 return (
                     <SettingsContainer
                         settingsContainerVisible={this.setSettingsVisible}
-                        setLifeModalVisible = {this.setLifeModalVisible}
+                        setLifeModalVisible={this.setLifeModalVisible}
                     />
                 )
             }
@@ -488,9 +492,9 @@ export default class App extends Component {
                 />
 
                 <SetLifeModal
-                    modalVisible = {this.state.lifeModalVisible}
-                    setModalVisible = {this.setLifeModalVisible}
-                    setLifeTotal = {this.setLifeTotal}
+                    modalVisible={this.state.lifeModalVisible}
+                    setModalVisible={this.setLifeModalVisible}
+                    setLifeTotal={this.setLifeTotal}
                 />
 
                 {bottomComponent()}
