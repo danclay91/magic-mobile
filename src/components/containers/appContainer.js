@@ -23,7 +23,7 @@ import PlayerHolder from '../playerHolder'
 //TODO: Rename this. It is too ambiguous. 
 import Edit from '../modals/editModal.js'
 import LifeTotalBox from '../lifeTotalBox'
-import SettingsBar from '../settingsBar'
+//import SettingsBar from '../settingsBar'
 import CounterContainer from './counterContainer'
 // These two counter types could likely be reduced to one. 
 import TokenCounters from '../tokenCounters'
@@ -34,7 +34,8 @@ import EditPlayerModal from '../modals/editPlayerModal'
 import CoinRoller from '../numberGenerators'
 import ModalMR from '../modals/modalMR'
 import Player from '../../js/player';
-import SettingsContainer from './settingsContainer'
+//import SettingsContainer from './settingsContainer'
+import BottomContainer from './bottomContainer'
 import SetLifeModal from '../modals/setLifeModal'
 //import Button from './playerButton'
 
@@ -77,6 +78,7 @@ export default class App extends Component {
             settingsContainerVisible: false,
             editPlayerModalVisible: false,
             lifeModalVisible: false,
+            bottomComponent: 'COUNTER_OPTIONS',
             settings: {
                 defaultLife: 20,
             }
@@ -112,6 +114,13 @@ export default class App extends Component {
         else {
             AsyncStorage.setItem('dataKey',JSON.stringify(this.state.data)); 
         }
+    }
+
+    /**
+     * Used to set which component is being rendered at bottom of screen.
+     */
+    setBottomComponent = (_bottomComponent) =>{ 
+        this.setState({bottomComponent: _bottomComponent})
     }
 
     /**
@@ -498,7 +507,10 @@ export default class App extends Component {
                 {bottomComponent()}
 
 
-                {settingsContainer()}
+                <BottomContainer
+                    bottomComponent = {this.state.bottomComponent}
+                    setBottomComponent = {this.setBottomComponent}
+                />
 
 
 
