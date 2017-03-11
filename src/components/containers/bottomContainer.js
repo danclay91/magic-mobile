@@ -13,17 +13,20 @@ export default class BottomContainer extends Component {
     }
 
     render() {
-        alert(this.props.bottomComponent)
         if (this.props.bottomComponent == 'COUNTER_OPTIONS') {
             return (
                 <CounterOptions
                     setBottomComponent={this.props.setBottomComponent}
+                    addCounter = {this.props.addCounter}
+                    coinRollerVisible = {this.props.coinRollerVisible}
                 />
             )
         } else {
             return (
                 <GameOptions
                     setBottomComponent={this.props.setBottomComponent}
+                    setLifeModalVisible = {this.props.setLifeModalVisible}
+                    startNewGame = {this.props.startNewGame}
                 />
             )
         }

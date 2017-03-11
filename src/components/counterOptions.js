@@ -18,7 +18,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FounIcon from 'react-native-vector-icons/Foundation';
 
-export default class SettingsBar extends Component {
+export default class CounterOptions extends Component {
     render() {
 
         return (
@@ -31,10 +31,6 @@ export default class SettingsBar extends Component {
                 borderRadius: 18,
                 borderColor: 'black'
             }}>
-
-
-
-
 
 
                 <TouchableOpacity onPress={() => this.props.coinRollerVisible()} style={{ flex: .50, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1 }}>

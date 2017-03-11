@@ -1,3 +1,7 @@
+/**
+ * This file does not seem to be needed. Can likely be deleted.
+ */
+
 import React, { Component } from 'react';
 import {
     Image,

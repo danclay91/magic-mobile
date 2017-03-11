@@ -17,7 +17,7 @@ import {
     AsyncStorage,
 } from 'react-native'
 
-import AddPlayer from '../playerOptions'
+import PlayerOptions from '../playerOptions'
 
 import PlayerHolder from '../playerHolder'
 //TODO: Rename this. It is too ambiguous. 
@@ -28,7 +28,7 @@ import CounterContainer from './counterContainer'
 // These two counter types could likely be reduced to one. 
 import TokenCounters from '../tokenCounters'
 import BasicCounters from '../basicCounters'
-import PlayerNameModal from '../modals/playerNameModal'
+import PlayerNameModal from '../modals/playerModal'
 import EditCounterModal from '../modals/editCounterModal'
 import EditPlayerModal from '../modals/editPlayerModal'
 import CoinRoller from '../numberGenerators'
@@ -244,6 +244,7 @@ export default class App extends Component {
      *  
      */
     deletePlayer = () => {
+        alert('Delete player executing.')
         let data = this.state.data;
         const index = data.key;
         let TKey = this.state.selectedKey;
@@ -404,6 +405,16 @@ export default class App extends Component {
         }
     }
 
+    /**
+     * Start a new game by deleting data object. 
+     */
+     startNewGame = () => {
+         //TODO: Add a confirmation modal. 
+         this.setState({
+             data:[]
+         })    
+     }
+
     render() {
 
         //Determine which component is displayed at bottom of screen.
@@ -459,7 +470,7 @@ export default class App extends Component {
 
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
-                    <AddPlayer onAddPlayer={this.addPlayer} data={this.state.data} setVis={this.setEditModalVisible} />
+                    <PlayerOptions onAddPlayer={this.addPlayer} data={this.state.data} setPlayerModalVisible={this.setEditPlayerModalVisible} />
 
                 </View>
 
@@ -486,6 +497,7 @@ export default class App extends Component {
                     setPlayerName={this.setPlayerName}
                     data={this.state.data}
                     selectedKey={this.state.selectedKey}
+                    deletePlayer = {this.deletePlayer}
                 />
 
                 <EditCounterModal
@@ -506,15 +518,14 @@ export default class App extends Component {
 
                 {bottomComponent()}
 
-
                 <BottomContainer
                     bottomComponent = {this.state.bottomComponent}
                     setBottomComponent = {this.setBottomComponent}
+                    addCounter = {this.addCounter}
+                    coinRollerVisible = {this.setCoinRollerVisible}
+                    setLifeModalVisible = {this.setLifeModalVisible}
+                    startNewGame = {this.startNewGame}
                 />
-
-
-
-
             </View>
         )
     }

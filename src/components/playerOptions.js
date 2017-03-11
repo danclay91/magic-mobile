@@ -33,12 +33,12 @@ export default class AddPlayer extends Component {
                     </View>
                     <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'Teko-Light' }}>Add Player</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.editPlayer} onPress={()=>this.props.setVis(true)}>
+                <TouchableOpacity style={styles.editPlayer} onPress={()=>this.props.setPlayerModalVisible(true)}>
 
                     <View style={{ alignItems: 'center', justifyContent: 'center', }}>
                         <FounIcon name="results-demographics" size={15} color='white' />
                     </View>
-                    <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'Teko-Light' }}>Edit Players</Text>
+                    <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'Teko-Light' }}>Edit Player</Text>
                 </TouchableOpacity>
             </View>
         );

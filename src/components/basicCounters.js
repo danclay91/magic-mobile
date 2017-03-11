@@ -17,7 +17,7 @@ import {
 } from 'react-native'
 
 //import SettingsBar from './settingsBar';
-
+//something
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FounIcon from 'react-native-vector-icons/Foundation';
 
