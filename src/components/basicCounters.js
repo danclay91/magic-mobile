@@ -33,7 +33,7 @@ export default class BasicCounters extends Component {
         return (
 
             <TouchableOpacity
-                onLongPress={() => this.props.setEditCounterModalVisible(true,index)}
+                onLongPress={() => this.props.singularCounterCall(index)}
                 style={{
                     height: 56,
                     backgroundColor: '#babdc1',

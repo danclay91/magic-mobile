@@ -69,6 +69,7 @@ export default class App extends Component {
             ],
             //TODO: Put all settings in one object, or put all data into one object.
             counterIndex: 0,
+            counterMode: 1,
             selectedKey: 1,
             editModalVisible: false,
             backgroundModalVisible: false,
@@ -299,6 +300,28 @@ export default class App extends Component {
         this.setState({ editModalVisible: visible });
     }
 
+    /* used by the counter itself and called on long press. opens editcountermodal
+        and sets counterMode to two, rendering a single counter editor for the selected counter
+    */
+    singularCounterCall = (index) =>{
+        this.setState({
+            counterMode: 1,
+            editCounterModalVisible: true,
+            counterIndex: index
+        })
+
+    }
+    /*used by the edit counters button to call up the editcountermodal with 
+        an editor for each counter
+    */
+    playerCounterCall = () =>{
+        this.setState({
+            counterMode: 2,
+            editCounterModalVisible: true,
+        })
+
+    }
+
     setEditCounterModalVisible = (visible, index) => {
         this.setState({
             editCounterModalVisible: visible,
@@ -427,7 +450,7 @@ export default class App extends Component {
                         selectedKey={this.state.selectedKey}
                         minusCounterValue={this.minusCounterValue}
                         plusCounterValue={this.plusCounterValue}
-                        setEditCounterModalVisible={this.setEditCounterModalVisible}
+                        singularCounterCall={this.singularCounterCall}
 
                     />
 
@@ -455,7 +478,8 @@ export default class App extends Component {
                         addToken={this.addToken}
                         addCounter={this.addCounter}
                         coinRollerVisible={this.setCoinRollerVisible}
-                        settingsContainerVisible={this.setSettingsVisible} />
+                        settingsContainerVisible={this.setSettingsVisible}
+                         />
                 )
             }
         }
@@ -508,6 +532,7 @@ export default class App extends Component {
                     counterIndex={this.state.counterIndex}
                     deleteCounter={this.deleteCounter}
                     editCounterName={this.editCounterName}
+                    counterMode = {this.state.counterMode}
                 />
 
                 <SetLifeModal
@@ -525,6 +550,7 @@ export default class App extends Component {
                     coinRollerVisible = {this.setCoinRollerVisible}
                     setLifeModalVisible = {this.setLifeModalVisible}
                     startNewGame = {this.startNewGame}
+                    playerCounterCall={this.playerCounterCall}
                 />
             </View>
         )

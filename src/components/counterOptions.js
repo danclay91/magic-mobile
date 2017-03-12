@@ -65,7 +65,7 @@ export default class CounterOptions extends Component {
 
 
 
-                <TouchableOpacity onPress={() => { this.props.addCounter(); this.props.coinRollerVisible(true) } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
+                <TouchableOpacity onPress={() => { this.props.playerCounterCall() } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
 
