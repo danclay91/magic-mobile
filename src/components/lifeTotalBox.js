@@ -75,10 +75,10 @@ export default class LifeTotalBox extends Component {
         }
 
         //determine font styling based on digits of lifeTotal
-        let digits = selectedPlayer.lifeTotal.toString().length; 
-        var selectedStyle; 
+        let digits = selectedPlayer.lifeTotal.toString().length;
+        var selectedStyle;
 
-        if(digits>2){
+        if (digits > 2) {
             selectedStyle = styles.smallLifeScore;
         } else {
             selectedStyle = styles.regularLifeScore;
@@ -102,28 +102,25 @@ export default class LifeTotalBox extends Component {
         } else {
             playerName = selectedPlayer.name;
         }
-        
+
 
         return (
             <View style={styles.nameBox}>
-                <TouchableOpacity
-                    onLongPress={() => this.props.setModalVisible(true)}>
-                    <Text style={styles.nameText}>{playerName}</Text>
-                </TouchableOpacity>
+                <Text style={styles.nameText}>{playerName}</Text>
             </View>
         )
     }
 
     render() {
         // TEMPORARY FIX 
-        if(this.props.data == null){
+        if (this.props.data == null) {
             return (
                 <View style={styles.lifeBox} >
                     <View style={styles.topContainer}>
                     </View>
                 </View>
             )
-         }
+        }
 
         selectedPlayer = this.props.data[this.props.selectedKey]
 

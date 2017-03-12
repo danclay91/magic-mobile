@@ -244,7 +244,6 @@ export default class App extends Component {
      *  
      */
     deletePlayer = () => {
-        alert('Delete player executing.')
         let data = this.state.data;
         const index = data.key;
         let TKey = this.state.selectedKey;
@@ -470,14 +469,14 @@ export default class App extends Component {
 
 
                 <View style={{ flex: 1, backgroundColor: 'blue' }} >
-                    <PlayerOptions onAddPlayer={this.addPlayer} data={this.state.data} setPlayerModalVisible={this.setEditPlayerModalVisible} />
+                    <PlayerOptions onAddPlayer={this.addPlayer} data={this.state.data} setPlayerModalVisible={this.setPlayerNameModalVisible} />
 
                 </View>
 
 
 
                 <View style={{ flex: 1.50, backgroundColor: 'black' }}>
-                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} editPlayerModal={this.setEditPlayerModalVisible} />
+                    <PlayerHolder data={this.state.data} onSelectPlayer={this.selectPlayer} editPlayerModal={this.setPlayerNameModalVisible} />
                 </View>
 
 
