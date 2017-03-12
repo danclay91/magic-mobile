@@ -23,7 +23,7 @@ import PlayerHolder from '../playerHolder'
 //TODO: Rename this. It is too ambiguous. 
 import Edit from '../modals/editModal.js'
 import LifeTotalBox from '../lifeTotalBox'
-//import SettingsBar from '../settingsBar'
+import GameBar from '../gameOptions'
 import CounterContainer from './counterContainer'
 // These two counter types could likely be reduced to one. 
 import TokenCounters from '../tokenCounters'
@@ -34,10 +34,10 @@ import EditPlayerModal from '../modals/editPlayerModal'
 import CoinRoller from '../numberGenerators'
 import ModalMR from '../modals/modalMR'
 import Player from '../../js/player';
-//import SettingsContainer from './settingsContainer'
+import CounterOptions from '../counterOptions'
 import BottomContainer from './bottomContainer'
 import SetLifeModal from '../modals/setLifeModal'
-//import Button from './playerButton'
+import Button from '../playerButton'
 
 
 /**
@@ -231,7 +231,7 @@ export default class App extends Component {
         const dataLength = data.length;
 
         var newPlayer = Player("player", 20, null, dataLength);
-        //data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
+        data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
 
         data.push(newPlayer);
 
@@ -443,7 +443,7 @@ export default class App extends Component {
         let settingsContainer = () => {
             if (this.state.settingsContainerVisible == true) {
                 return (
-                    <SettingsContainer
+                    <GameBar
                         settingsContainerVisible={this.setSettingsVisible}
                         setLifeModalVisible={this.setLifeModalVisible}
                     />
@@ -451,7 +451,7 @@ export default class App extends Component {
             }
             else {
                 return (
-                    <SettingsBar
+                    <CounterBar
                         addToken={this.addToken}
                         addCounter={this.addCounter}
                         coinRollerVisible={this.setCoinRollerVisible}
