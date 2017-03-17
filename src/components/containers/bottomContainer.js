@@ -19,6 +19,7 @@ export default class BottomContainer extends Component {
                     setBottomComponent={this.props.setBottomComponent}
                     addCounter = {this.props.addCounter}
                     coinRollerVisible = {this.props.coinRollerVisible}
+                    playerCounterCall={this.props.playerCounterCall}
                 />
             )
         } else {

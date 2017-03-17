@@ -44,27 +44,6 @@ export default class CounterOptions extends Component {
 
 
 
-                <TouchableOpacity onPress={() => { this.props.addToken(); this.props.coinRollerVisible(true) } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
-
-                    <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
-
-                        <FounIcon name="plus" size={25} color="#bcdbbe" />
-
-                    </View>
-
-
-                    <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Tokens</Text>
-                    </View>
-
-                </TouchableOpacity>
-
-
-
-
-
-
-
                 <TouchableOpacity onPress={() => { this.props.addCounter(); this.props.coinRollerVisible(true) } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
 
                     <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
@@ -76,6 +55,27 @@ export default class CounterOptions extends Component {
 
                     <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Counters</Text>
+                    </View>
+
+                </TouchableOpacity>
+
+
+
+
+
+
+
+                <TouchableOpacity onPress={() => { this.props.playerCounterCall() } } style={{ flex: 1.50, flexDirection: 'row', borderColor: 'black', borderLeftWidth: 1, borderRightWidth: 1 }}>
+
+                    <View style={{ flex: .35, justifyContent: 'center', alignItems: 'flex-end' }}>
+
+                        <FounIcon name="plus" size={25} color="#bcdbbe" />
+
+                    </View>
+
+
+                    <View style={{ flex: 1.15, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontFamily: 'Teko-Medium', fontSize: 20, color: 'white' }}>Edit Counters</Text>
                     </View>
 
                 </TouchableOpacity>

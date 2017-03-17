@@ -35,15 +35,19 @@ export default class CounterContainer extends Component {
             let counters = selectedPlayer.counters.map((counter, index) => {
                 if (counter.type == "counter") {
                     return (
-                        <Counter name={counter.name} value={counter.value} key={index} index={index} minusCounterValue={this.props.minusCounterValue} plusCounterValue={this.props.plusCounterValue}
-                            setEditCounterModalVisible={this.props.setEditCounterModalVisible} />
+                        <Counter name={counter.name} value={counter.value} key={index} index={index} 
+                                 minusCounterValue={this.props.minusCounterValue} 
+                                 plusCounterValue={this.props.plusCounterValue}
+                                 singularCounterCall={this.props.singularCounterCall} />
                     )
                 }
 
                 else if (counter.type == "token") {
                     return (
-                        <Token name={counter.name} value={counter.value} key={index} index={index} minusCounterValue={this.props.minusCounterValue} plusCounterValue={this.props.plusCounterValue}
-                            setEditCounterModalVisible={this.props.setEditCounterModalVisible} />
+                        <Token name={counter.name} value={counter.value} key={index} index={index} 
+                               minusCounterValue={this.props.minusCounterValue} 
+                               plusCounterValue={this.props.plusCounterValue}
+                               setEditCounterModalVisible={this.props.setEditCounterModalVisible} />
                     )
                 }
             })

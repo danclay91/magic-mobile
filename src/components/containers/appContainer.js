@@ -23,7 +23,7 @@ import PlayerHolder from '../playerHolder'
 //TODO: Rename this. It is too ambiguous. 
 import Edit from '../modals/editModal.js'
 import LifeTotalBox from '../lifeTotalBox'
-//import SettingsBar from '../settingsBar'
+import GameBar from '../gameOptions'
 import CounterContainer from './counterContainer'
 // These two counter types could likely be reduced to one. 
 import TokenCounters from '../tokenCounters'
@@ -34,10 +34,10 @@ import EditPlayerModal from '../modals/editPlayerModal'
 import CoinRoller from '../numberGenerators'
 import ModalMR from '../modals/modalMR'
 import Player from '../../js/player';
-//import SettingsContainer from './settingsContainer'
+import CounterOptions from '../counterOptions'
 import BottomContainer from './bottomContainer'
 import SetLifeModal from '../modals/setLifeModal'
-//import Button from './playerButton'
+import Button from '../playerButton'
 
 
 /**
@@ -69,6 +69,7 @@ export default class App extends Component {
             ],
             //TODO: Put all settings in one object, or put all data into one object.
             counterIndex: 0,
+            counterMode: 1,
             selectedKey: 1,
             editModalVisible: false,
             backgroundModalVisible: false,
@@ -231,7 +232,7 @@ export default class App extends Component {
         const dataLength = data.length;
 
         var newPlayer = Player("player", 20, null, dataLength);
-        //data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
+        data.push({ name: "player", lifeTotal: 20, id: dataLength, key: dataLength, counters:[]});
 
         data.push(newPlayer);
 
@@ -296,6 +297,28 @@ export default class App extends Component {
 
     setEditModalVisible = (visible) => {
         this.setState({ editModalVisible: visible });
+    }
+
+    /* used by the counter itself and called on long press. opens editcountermodal
+        and sets counterMode to two, rendering a single counter editor for the selected counter
+    */
+    singularCounterCall = (index) =>{
+        this.setState({
+            counterMode: 1,
+            editCounterModalVisible: true,
+            counterIndex: index
+        })
+
+    }
+    /*used by the edit counters button to call up the editcountermodal with 
+        an editor for each counter
+    */
+    playerCounterCall = () =>{
+        this.setState({
+            counterMode: 2,
+            editCounterModalVisible: true,
+        })
+
     }
 
     setEditCounterModalVisible = (visible, index) => {
@@ -426,7 +449,7 @@ export default class App extends Component {
                         selectedKey={this.state.selectedKey}
                         minusCounterValue={this.minusCounterValue}
                         plusCounterValue={this.plusCounterValue}
-                        setEditCounterModalVisible={this.setEditCounterModalVisible}
+                        singularCounterCall={this.singularCounterCall}
 
                     />
 
@@ -442,7 +465,7 @@ export default class App extends Component {
         let settingsContainer = () => {
             if (this.state.settingsContainerVisible == true) {
                 return (
-                    <SettingsContainer
+                    <GameBar
                         settingsContainerVisible={this.setSettingsVisible}
                         setLifeModalVisible={this.setLifeModalVisible}
                     />
@@ -450,11 +473,12 @@ export default class App extends Component {
             }
             else {
                 return (
-                    <SettingsBar
+                    <CounterBar
                         addToken={this.addToken}
                         addCounter={this.addCounter}
                         coinRollerVisible={this.setCoinRollerVisible}
-                        settingsContainerVisible={this.setSettingsVisible} />
+                        settingsContainerVisible={this.setSettingsVisible}
+                         />
                 )
             }
         }
@@ -507,6 +531,7 @@ export default class App extends Component {
                     counterIndex={this.state.counterIndex}
                     deleteCounter={this.deleteCounter}
                     editCounterName={this.editCounterName}
+                    counterMode = {this.state.counterMode}
                 />
 
                 <SetLifeModal
@@ -524,6 +549,7 @@ export default class App extends Component {
                     coinRollerVisible = {this.setCoinRollerVisible}
                     setLifeModalVisible = {this.setLifeModalVisible}
                     startNewGame = {this.startNewGame}
+                    playerCounterCall={this.playerCounterCall}
                 />
             </View>
         )
